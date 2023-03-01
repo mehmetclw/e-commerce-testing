@@ -1,7 +1,7 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.utility.ConfigReader;
 import com.github.javafaker.Faker;
-import com.github.javafaker.Internet;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.Random;
 
-public class UserRegistration {
+public class UserRegistrationTest {
     /**
      * Enter valid details and check if the user is able to register successfully.
      * 1- Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
@@ -32,8 +31,8 @@ public class UserRegistration {
      * click register
      */
     WebDriver driver;
-    public String url = "https://ecommerce.yosemiteint.com/prestashop/index.php";
-    public String email = "sohacom13@gmail.com";
+    public String url = ConfigReader.getProperty("url");
+    public String email = ConfigReader.getProperty("email");
     public String password = "";
 
     /**
@@ -99,13 +98,7 @@ public class UserRegistration {
     /**
      * waits
      */
-    public void waits(long seconds) {
-        try {
-            Thread.sleep(Duration.ofSeconds(seconds));
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 /**
  * 2- Verify that existing customer should not able to register again.
  *
