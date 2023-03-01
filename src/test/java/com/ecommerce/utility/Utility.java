@@ -42,7 +42,7 @@ public class Utility {
 
     public static void waits(long seconds) {
         try {
-            Thread.sleep(Duration.ofSeconds(seconds));
+            Thread.sleep(seconds*1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
