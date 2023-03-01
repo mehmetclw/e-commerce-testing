@@ -81,8 +81,6 @@ public class CheckingItemDetailsFromWindow {
         womenLink.click();
         //Going to first product in the page
         List<WebElement> PageProducts = driver.findElements(By.cssSelector("h5[itemprop=name]>a.product-name"));
-        //li[contains(@class,'ajax_block_product col-xs-12 col-sm-6 col-md-4 first')]//img[@alt='Faded Short Sleeves T-shirt']
-        //a[contains(@href,'https://ecommerce.yosemiteint.com/prestashop/index.php?id_product=1&controller')]/span[1]
         Utility.scrollToCenter(driver, PageProducts.get(0));
         Utility.waits(1);
         Utility.hoverOver(driver, PageProducts.get(0), 1);
