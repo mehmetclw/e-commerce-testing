@@ -27,36 +27,32 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
      * Happy path story for Test Navigation;
      * 1- Go to the website
      * 2- Go to the Women bar
-     *      a- Click Women bar,
-     *      b- Verify that is correct page when click
-     *      c- Go back home page,
-     *      d- Go to Women bar
-     *      e- Go to T-Shirts link
-     *      f- Click T-Shirts link
-     *      g- Verify that is correct page when click
-     *      h- Go back home page,
-     *      i- Go to Women bar
-     *      j- Go to Blouses link
-     *      k- Click the Blouses link
-     *      l- Verify that is correct page when click
-     * 3- Go to the Dresses bar,
-     *      a- Click the Dresses bar,
-     *      b- Verify that is correct page when click
+     *      a- Click Women bar
+     *      b- Verify that is correct page with header
      *      c- Go back home page
-     *      d- Go to the dress bar
-     *      e- Go to the Casual Dresses
-     *      f- Click on Casual Dresses
-     *      g- Verify that is correct page when click
-     *      h- Go back home page,
-     *      i- Go to the Dresses bar,
-     *      j- Go to the Evening Dresses
-     *      k- Click on Evening Dress
-     *      l- Verify that is correct page when click
-     *      n- Go back home page,
-     *      o- Go to the dress bar
-     *      p- Go to the summer dresses
-     *      q- Click on the Summer Dresses
-     *      r- Verify that is correct page when click
+     *      d- Hover over to  Women bar
+     *      e- Click T-Shirts link
+     *      f-Verify that is correct page with header
+     *      g- Go back home page,
+     *      h-Hover over Women bar
+     *      i- Click the Blouses link
+     *      j-Verify that is correct with header
+     * 3- Go to the Dresses bar
+     *      a- Click the Dresses bar
+     *      b- Verify that is correct page with header
+     *      c- Go back home page
+     *      d- Hover over the dress bar
+     *      e- Click on Casual Dresses
+     *      f- Verify that is correct page with header
+     *      g- Go back home page
+     *      h- Hover over Dresses bar
+     *      i-Go to the Evening Dresses
+     *      j- Click on Evening Dress
+     *      k- Verify that is correct page when click
+     *      l- Go back home page
+     *      n- Hover over  dress bar
+     *      o- Click on the Summer Dresses
+     *      p- Verify that is correct page with header
      * 4- Go to the T-Shirts Tab
      *      a- Click on the T-Shirts tab
      *      b- Verify that is correct page when click
