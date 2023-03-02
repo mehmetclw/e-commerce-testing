@@ -29,33 +29,27 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
      * 2- Go to the Women bar
      *      a- Click Women bar
      *      b- Verify that is correct page with header
-     *      c- Go back home page
-     *      d- Hover over to  Women bar
-     *      e- Click T-Shirts link
-     *      f-Verify that is correct page with header
-     *      g- Go back home page,
-     *      h-Hover over Women bar
-     *      i- Click the Blouses link
-     *      j-Verify that is correct with header
+     *      c- Hover over to  Women bar
+     *      d- Click T-Shirts link
+     *      e- Verify that is correct page with header
+     *      f-Hover over Women bar
+     *      g-Click the Blouses link
+     *      h-Verify that is correct with header
      * 3- Go to the Dresses bar
      *      a- Click the Dresses bar
      *      b- Verify that is correct page with header
-     *      c- Go back home page
-     *      d- Hover over the dress bar
-     *      e- Click on Casual Dresses
-     *      f- Verify that is correct page with header
-     *      g- Go back home page
-     *      h- Hover over Dresses bar
-     *      i-Go to the Evening Dresses
-     *      j- Click on Evening Dress
-     *      k- Verify that is correct page when click
-     *      l- Go back home page
-     *      n- Hover over  dress bar
-     *      o- Click on the Summer Dresses
-     *      p- Verify that is correct page with header
+     *      c- Hover over the dress bar
+     *      d- Click on Casual Dresses
+     *      e- Verify that is correct page with header
+     *      f- Hover over Dresses bar
+     *      g- Click on Evening Dress
+     *      h- Verify that is correct page with header
+     *      i- Hover over  dress bar
+     *      j- Click on the Summer Dresses
+     *      k- Verify that is correct page with header 
      * 4- Go to the T-Shirts Tab
      *      a- Click on the T-Shirts tab
-     *      b- Verify that is correct page when click
+     *      b- Verify that is correct page with header
      **/
 
     WebDriver driver;
@@ -79,14 +73,10 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         WebElement womenPageHeader = driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
         Assert.assertTrue(womenPageHeader.isDisplayed());
         Utility.waits(1);
-        //Going to the home page
-        WebElement goToHomePage = driver.findElement(By.xpath("//*[@id='columns']/div[1]/a/i"));
-        Utility.waits(1);
-        // Women tab again for TSHirt link
+        // Hover over Women tab again for TSHirt link
         WebElement womenTab2 = driver.findElement(By.xpath("//*[@class='sf-with-ul'][@title='Women']"));
         // Hover over to TShirt link
-        Actions actions = new Actions(driver);
-        actions.moveToElement(womenTab2).perform();
+        Utility.hoverOver(driver,womenTab2,2);
         Utility.waits(1);
         WebElement tShirtLink = driver.findElement(By.xpath("(//a[@title='T-shirts'][normalize-space()='T-shirts'])[1]"));
         tShirtLink.click();
@@ -94,12 +84,9 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         // Verifying the TShirt page
         WebElement tShirtPageHeader = driver.findElement(By.xpath("//h1[@class='page-heading product-listing']"));
         Assert.assertTrue(tShirtPageHeader.isDisplayed());
-        // Going to home page
-        WebElement goToHomePage2 = driver.findElement(By.xpath("//*[@id='columns']/div[1]/a/i"));
-        // Go and Hover Over Women tab for Blouse link
+        //Hover Over Women tab for Blouse link
         WebElement womenTab3 = driver.findElement(By.xpath("//*[@class='sf-with-ul'][@title='Women']"));
-        Actions actions2 = new Actions(driver);
-        actions2.moveToElement(womenTab3).perform();
+        Utility.hoverOver(driver,womenTab3,2);
         // Go and click blouse link
         WebElement blouseLink = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[2]/a"));
         blouseLink.click();
@@ -107,7 +94,30 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         // Verify the blouse link page
         WebElement blouseLinkPageHeader = driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
         Assert.assertTrue(blouseLinkPageHeader.isDisplayed());
-
+        // Hover over Women Tab and Click Casual Dress
+        WebElement womenTab4 = driver.findElement(By.xpath("//*[@class='sf-with-ul'][@title='Women']"));
+        Utility.hoverOver(driver,womenTab4,1);
+        WebElement casualDress=driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[1]/a"));
+        casualDress.click();
+        // Verify the page
+        WebElement casualDressPageHeader= driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]")) ;
+        Assert.assertTrue(casualDressPageHeader.isDisplayed());
+        // Hover over Women Tab and Click Evening Dress
+        WebElement womenTab5 = driver.findElement(By.xpath("//*[@class='sf-with-ul'][@title='Women']"));
+        Utility.hoverOver(driver,womenTab5,1);
+        WebElement eveningDress= driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[2]"));
+        eveningDress.click();
+        // Verify the page
+        WebElement eveningDressPageHeader= driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
+        Assert.assertTrue(eveningDressPageHeader.isDisplayed());
+        // Hover over Women Tab and Click Summer Dress
+        WebElement womenTab6 = driver.findElement(By.xpath("//*[@class='sf-with-ul'][@title='Women']"));
+        Utility.hoverOver(driver,womenTab6,1);
+        WebElement summerDress= driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[3]/a"));
+        summerDress.click();
+        // Verify the page
+        WebElement summerDressPageHeader= driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
+        Assert.assertTrue(summerDressPageHeader.isDisplayed());
     }
 
     @Test
@@ -121,8 +131,7 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         // Hover over 'Dresses' bar and click 'Casual Dresses'
         Utility.waits(1);
         WebElement dressesBar1 = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/a"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(dressesBar1).perform();
+        Utility.hoverOver(driver,dressesBar1,2);
         WebElement casualDressLink = driver.findElement(By.xpath("(//a[@title='Casual Dresses'][normalize-space()='Casual Dresses'])[2]"));
         casualDressLink.click();
         Utility.waits(2);
@@ -130,23 +139,19 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         WebElement casualDressLinkPageHeader = driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
         Assert.assertTrue(casualDressLinkPageHeader.isDisplayed());
         // Go to the home page hover over 'Dresses' bar and click 'Evening Dresses'
-        WebElement goToHomePage1 = driver.findElement(By.xpath("(//i[@class='icon-home'])[1]"));
         Utility.waits(1);
         WebElement dressesBar2 = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/a"));
-        Actions actions1 = new Actions(driver);
-        actions1.moveToElement(dressesBar2).perform();
+        Utility.hoverOver(driver,dressesBar2,2);
         WebElement eveningDressLink = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a"));
         eveningDressLink.click();
         Utility.waits(2);
         // verify the Evening dress link page
         WebElement eveningDressLinkPageHeadr = driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
         Assert.assertTrue(eveningDressLinkPageHeadr.isDisplayed());
-        // Go to the home page hover over 'Dresses' bar and click 'Summer Dresses'
-        WebElement goToHomePage2 = driver.findElement(By.xpath("(//i[@class='icon-home'])[1]"));
+        // Hover over 'Dresses' bar and click 'Summer Dresses'
         Utility.waits(1);
         WebElement dressesBar3 = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/a"));
-        Actions actions2 = new Actions(driver);
-        actions1.moveToElement(dressesBar3).perform();
+        Utility.hoverOver(driver,dressesBar3,2);
         WebElement summerDressLink = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a"));
         summerDressLink.click();
         Utility.waits(2);
