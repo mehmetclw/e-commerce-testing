@@ -15,15 +15,10 @@ import java.time.Duration;
 
 public class UserRegistrationPages {
     WebDriver driver;
-
+    UserRegistrationElements ure;
     public UserRegistrationPages(WebDriver driver) {
-        PageFactory.initElements(driver, this);
         this.driver=driver;
     }
-
-
-    @FindBy(xpath = "//div[@class='header_user_info']/a")
-    public WebElement signInButton;
 
     /**
      * BrowserSetup
@@ -32,9 +27,8 @@ public class UserRegistrationPages {
     public String password = "";
 
     public void createNewAccount() {
-        System.out.println("$$$$$$$$$$ "+driver !=null);
-        UserRegistrationElements ure = new UserRegistrationElements(driver);
-        signInButton.click();
+        ure = new UserRegistrationElements(driver);
+        ure.signInButton.click();
         ure.emailAddress.click();
         ure.emailAddress.sendKeys(email);
         ure.createAccountButton.click();

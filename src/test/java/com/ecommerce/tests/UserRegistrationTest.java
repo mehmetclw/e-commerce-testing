@@ -16,9 +16,8 @@ import java.time.Duration;
 
 public class UserRegistrationTest {
     WebDriver driver;
-    UserRegistrationPages urp = new UserRegistrationPages(driver);
-
-
+    UserRegistrationPages urp;
+    public String url = ConfigReader.getProperty("url");
     /**
      * Enter valid details and check if the user is able to register successfully.
      * 1- Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
@@ -43,10 +42,8 @@ public class UserRegistrationTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
+        urp = new UserRegistrationPages(driver);
     }
-
-    public String url = ConfigReader.getProperty("url");
-
 
     @Test
     public void createNewAccount() {
@@ -66,12 +63,5 @@ public class UserRegistrationTest {
         System.out.println("email = " + email);
         System.out.println("name = " + name);
     }
-    /**
-     * waits
-     */
 
-/**
- * 2- Verify that existing customer should not able to register again.
- *
- */
 }
