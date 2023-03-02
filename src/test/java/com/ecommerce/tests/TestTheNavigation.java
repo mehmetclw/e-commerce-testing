@@ -118,8 +118,7 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
         Utility.waits(1);
         WebElement dressesBarPageHeader = driver.findElement(By.xpath("//*[@id='center_column']/h1/span[1]"));
         Assert.assertTrue(dressesBarPageHeader.isDisplayed());
-        // Go to the home page hover over 'Dresses' bar and click 'Casual Dresses'
-        WebElement goToHomePage = driver.findElement(By.xpath("(//i[@class='icon-home'])[1]"));
+        // Hover over 'Dresses' bar and click 'Casual Dresses'
         Utility.waits(1);
         WebElement dressesBar1 = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/a"));
         Actions actions = new Actions(driver);
