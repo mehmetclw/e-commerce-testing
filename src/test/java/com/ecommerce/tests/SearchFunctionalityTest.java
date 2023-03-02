@@ -1,5 +1,8 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.pages.SearchFunctionalityPages;
+import com.ecommerce.pages.UserRegistrationPages;
+import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Database;
 import com.ecommerce.utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,75 +12,64 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SearchFunctionalityTest {
-    /**
-     * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
-     * Verify you are in home page / Expected title="My Store"
-     * Click on search button type "Dress"
-     * click search
-     * verify the search page id displayed
-     * check all the expected result to be Dress items
-     * 1- product name have Dress
-     * 2-image related to dress
-     */
     WebDriver driver;
+    SearchFunctionalityPages sfp;
+    public String url = ConfigReader.getProperty("url");
 
-    @BeforeMethod
-    public void setup() {
+    @BeforeClass
+    public void browserSetup() {
         driver = WebDriverManager.chromedriver().create();
+        //driver = WebDriverManager.chromedriver().setup();
         driver.manage().window().maximize();
-        driver.get("https://ecommerce.yosemiteint.com/prestashop/index.php");
-    }
-    public static void scrollDown(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get(url);
+         sfp = new SearchFunctionalityPages(driver);
     }
 
-    public static void scrollUp(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 0);");
-    }
+
+
     @Test
     public void validSearching() {
-
-        //* Verify you are in home page / Expected title="My Store"
-        String expectedPageTitle = "My Store";
-        // Get the title of the web page and compare to expected title
-        String pageTitle = driver.getTitle();
-        Assert.assertEquals(pageTitle, expectedPageTitle, "Page title not match");
-        System.out.println("The user in the home page");
-        //Go to search button and Enter "Dress" and click search
-        WebElement searchBox = driver.findElement(By.name("search_query"));
-        searchBox.sendKeys("Dress");
-        WebElement searchButton = driver.findElement(By.name("submit_search"));
-        searchButton.click();
-        //verify the search page id displayed
-        String expectedSearchPageTitle = "Search - My Store";
-        String searchPageTitle = driver.getTitle();
-        Assert.assertEquals(searchPageTitle, expectedSearchPageTitle, "Search page not displayed");
-        System.out.println("the user is in searching page ");
-        Utility.waits(3);
-        WebElement element=driver.findElement(By.xpath("(//a[contains(text(),'Printed Summer Dress')])[2]"));
-        Utility.hoverOver(driver,element,3);
-        scrollDown(driver);
-        Utility.waits(3);
-        scrollUp(driver);
-        // Verify that relevant search results are displayed
-        List<WebElement> searchResults = driver.findElements(By.xpath("//*[@id=\"product_list\"]"));
-        for (WebElement searchResult : searchResults) {
-            String productTitle = searchResult.findElement(By.cssSelector("h5>a")).getText();
-            if (!productTitle.contains("Dress")) {
-                System.out.println("Error: Invalid search result - " + productTitle);
-            }
-            else {
-                System.out.println("Relevant search result ");
-            }}
-
-
+        /**
+         * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * Verify you are in home page / Expected title="My Store"
+         * Click on search button type "Dress"
+         * click search
+         * verify the search page id displayed
+         * check all the expected result to be Dress items
+         *product name have Dress
+         * */
+        sfp.validSearching();
     }
+    @Test
+    public void sortTheResults() {
+
+        /******** Sort the search results by price (lowest to highest)
+         * go to sort option
+         * select price low to hight
+         * check the prices result is sorted
+         */
+        sfp.sortTheResults();
+    }
+@Test
+    public void invalidSearching() {
+        /***********************invalidSearching
+         * scrollUp in to search box
+         * go back to search box
+         *Clear the search box and enter an invalid search term"XYZ"
+         *Click on the search button
+         *Verify that error message is displayed
+         */
+        sfp.invalidSearching();
+    }
+
+
 }
