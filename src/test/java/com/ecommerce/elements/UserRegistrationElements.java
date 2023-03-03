@@ -6,11 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UserRegistrationElements {
-    WebDriver driver;
 
     //This is going to initialize the page objects
     public UserRegistrationElements(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
