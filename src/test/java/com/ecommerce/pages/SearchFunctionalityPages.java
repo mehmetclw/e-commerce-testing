@@ -25,6 +25,15 @@ public class SearchFunctionalityPages {
     public String password = "";
 
     public void validSearching(){
+        /**
+         * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * Verify you are in home page / Expected title="My Store"
+         * Click on search button type "Dress"
+         * click search
+         * verify the search page id displayed
+         * check all the expected result to be Dress items
+         *product name have Dress
+         * */
         sfe = new SearchFunctionalityElements(driver);
         //* Verify you are in home page / Expected title="My Store"
         String expectedPageTitle = "My Store";
@@ -33,6 +42,7 @@ public class SearchFunctionalityPages {
         Assert.assertEquals(pageTitle, expectedPageTitle, "Page title not match");
         System.out.println("The user in the home page");
         //Go to search button and Enter "Dress" and click search
+        sfe.searchBox.click();
         sfe.searchBox.sendKeys("Dress");
         sfe.searchButton.click();
         //verify the search page id displayed
@@ -59,11 +69,14 @@ public class SearchFunctionalityPages {
          * select price low to hight
          * check the prices result is sorted
          */
-        validSearching();
+
+        sfe = new SearchFunctionalityElements(driver);
+        sfe.searchBox.click();
+        sfe.searchBox.sendKeys("Dress");
+        sfe.searchButton.click();
         sfe.sortOption.click();
         Select select= new Select(sfe.sortOption);
         select.selectByValue("price:asc");
-        sfe.sortOption.click();
         // Verify that search results are sorted by price correctly
         List<WebElement> productPrices = driver.findElements(By.xpath("//ul[@id=product_list]"));
         List<Float> prices = new ArrayList<Float>();
@@ -81,29 +94,23 @@ public class SearchFunctionalityPages {
 
         }
     public void invalidSearching() {
-        /***********************invalidSearching
-         * scrollUp in to search button
-         * go back to search button
-         * clear the search button
+        /***********************invalid Searching
+         * * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * go to search button
          * enter invalid search "xzy"
          *Clear the search box and enter an invalid search term
          *Click on the search button again
          *Verify that error message is displayed
-         WebElement errorMessage = driver.findElement(By.xpath("//p[@class='alert alert-warning']"));
-         if (!errorMessage.getText().contains("No results were found for your search")) {
-         System.out.println("Error: Invalid error message - " + errorMessage.getText());
           */
-        validSearching();
         sfe = new SearchFunctionalityElements(driver);
-         scrollUp(driver);
-         sfe.searchBox.click();
-        sfe.searchBox.clear();
+        //Go to search button and Enter "xyz" and click search
+        sfe.searchBox.click();
         sfe.searchBox.sendKeys("xyz");
         sfe.searchButton.click();
-        Utility.waits(4);
-        if (!sfe.errorMessage.getText().contains("No results were found for your search")) {
-            System.out.println("Error: Invalid error message - ");
-        }
+        String errorMessageDisplayed="No results were found for your search \"xyz\"";
+        Assert.assertEquals(sfe.errorMessage.getText(),errorMessageDisplayed,"Error message not displayed");
+
+
     }
     public static void scrollDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;

@@ -63,9 +63,9 @@ public class SearchFunctionalityTest {
     @Test
     public void invalidSearching() {
         /***********************invalidSearching
-         * scrollUp in to search box
-         * go back to search box
-         *Clear the search box and enter an invalid search term"XYZ"
+         * * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * to search button
+         * enter invalid search "xzy"
          *Click on the search button
          *Verify that error message is displayed
          */
