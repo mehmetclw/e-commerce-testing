@@ -83,8 +83,6 @@ import static org.testng.AssertJUnit.assertTrue;
             if (driver != null)
                 scp.addAndRemoveToCart();
             else System.out.println("Driver is null");
-
-
         }
     }
 

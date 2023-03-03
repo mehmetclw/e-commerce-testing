@@ -8,11 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class ItemDetailsVerificationElements {
-    WebDriver driver;
-
     //This is going to initialize the page objects
     public ItemDetailsVerificationElements(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

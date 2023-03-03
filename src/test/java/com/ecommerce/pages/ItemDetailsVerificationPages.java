@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class ItemDetailsVerificationPages {
+
     WebDriver driver;
     ItemDetailsVerificationElements idv;
     SoftAssert sf = new SoftAssert();
@@ -113,7 +114,7 @@ public class ItemDetailsVerificationPages {
         sf.assertEquals(actualItemExplanation, expectedItemExp, "PRODUCT DESCRIPTION DOES NOT MATCH.");
         sf.assertEquals(actualItemPrice, expectedItemPrice, "PRODUCT PRICE DOES NOT MATCH.");
         Utility.waits(1);
-
+        
         //Adding product to cart
         idv.addToCart.click();
         Utility.waits(1);

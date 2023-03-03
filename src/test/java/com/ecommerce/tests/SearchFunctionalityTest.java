@@ -31,9 +31,8 @@ public class SearchFunctionalityTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
-         sfp = new SearchFunctionalityPages(driver);
+        sfp = new SearchFunctionalityPages(driver);
     }
-
 
 
     @Test
@@ -49,6 +48,7 @@ public class SearchFunctionalityTest {
          * */
         sfp.validSearching();
     }
+
     @Test
     public void sortTheResults() {
 
@@ -59,7 +59,8 @@ public class SearchFunctionalityTest {
          */
         sfp.sortTheResults();
     }
-@Test
+
+    @Test
     public void invalidSearching() {
         /***********************invalidSearching
          * scrollUp in to search box

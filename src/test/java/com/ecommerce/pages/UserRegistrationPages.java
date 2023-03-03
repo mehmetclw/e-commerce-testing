@@ -50,4 +50,30 @@ public class UserRegistrationPages {
         select3.selectByValue("1990");
         ure.register.click();
     }
+
+    public void createNewAccount(String userEmail, String userPassword,String firstName,String lastName) {
+        ure = new UserRegistrationElements(driver);
+        ure.signInButton.click();
+        ure.emailAddress.click();
+        ure.emailAddress.sendKeys(userEmail);
+        ure.createAccountButton.click();
+        ure.mrsCheckBox.click();
+        ure.firstName.click();
+        ure.firstName.sendKeys(firstName);
+        ure.lastName.click();
+        ure.lastName.sendKeys(lastName);
+        ure.password.sendKeys(userPassword);
+
+        Select select = new Select(ure.day);
+        select.selectByIndex(0);
+        select.selectByValue("25");
+        Select select2 = new Select(ure.month);
+        select2.selectByIndex(0);
+        select2.selectByValue("12");
+        Select select3 = new Select(ure.year);
+        select3.selectByIndex(0);
+        select3.selectByValue("1990");
+        ure.register.click();
+        driver.findElement(By.xpath("//a[@class='logout']")).click();
+    }
 }
