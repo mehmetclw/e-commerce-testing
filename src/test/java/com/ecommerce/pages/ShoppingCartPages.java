@@ -96,6 +96,57 @@ public class ShoppingCartPages {
         System.out.println("Total price without tax is $26");
 
     }
+
+    public void invalidEmail(){
+        sce = new ShoppingCartElements(driver);
+
+        //Creating account
+        sce.clickSignInLink.click();
+        sce.clickEmailAddress.click();
+        sce.clickEmailAddress.sendKeys(email);
+        sce.clickCreateAccount.click();
+        // Verifying that the email is already registered
+        String actualTitle = sce.checkInvalidEmail.getText();
+        String expectedTitle = "An account using this email address has already been registered. Please enter a valid password or request a new one.";
+        Assert.assertEquals(actualTitle, expectedTitle, "Titles are not matching");
+        Utility.waits(2);
+
+        //Filling required fields
+        sce.clickEmailAddress.click();
+        sce.clickEmailAddress.clear();
+        sce.clickEmailAddress.sendKeys("abcd1@gmail.com");
+        sce.clickCreateAccount.click();
+        sce.register.click();
+
+        sce.firstName.click();
+        sce.firstName.sendKeys("elifnur");
+        sce.register.click();
+        //Verifying that user missed to field the required fields
+        String actualTitle1 = sce.checkInvalidLastname.getText();
+        String expectedTitle1 = "lastname is required.";
+        Assert.assertEquals(actualTitle1, expectedTitle1, "Titles are NOT matching");
+        Utility.waits(2);
+
+        //Again filling the required fields
+        sce.firstName.click();
+        sce.firstName.sendKeys("elif");
+        sce.lastName.click();
+        sce.lastName.sendKeys("birer");
+        Utility.waits(2);
+        sce.invalidPassword.click();
+        sce.invalidPassword.sendKeys("12");
+        Utility.waits(7);
+        sce.clickRegister.click();
+
+        //Verifying that user entered invalid password
+        String actualTitle2 = sce.checkInvalidPassword.getText();
+        String expectedTitle2 = "passwd is invalid.";
+        Assert.assertEquals(actualTitle2, expectedTitle2, "NOT matching");
+
+
+
+
+
+
+    }
 }
-
-

@@ -32,11 +32,11 @@ import static org.testng.AssertJUnit.assertTrue;
          * *1)Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
          * 2)Click sign in
          * 3)Fill the requirements field
-         * Enter the email address
+         *        Enter the email address
          * Enter the password
          * Click on signInButton
          * Verify title of page is matching
-         * 4)Click "Women" section
+         * 4)Click "Women" Link
          * 5)Check if the actualTitle and expectedTitle is same
          * 6)Add a product to the cart and verify that it is added correctly.
          * Click on Faded Short Sleeves T-shirt
@@ -84,6 +84,36 @@ import static org.testng.AssertJUnit.assertTrue;
                 scp.addAndRemoveToCart();
             else System.out.println("Driver is null");
         }
+
+        //Negative Path Story
+        /**
+         * 1)Go to home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * 2)Click Sign in //a[normalize-space()='Sign in']
+         *          Enter email address that have already been registered //input[@id='email_create']
+         *          3)Click create an account //span[normalize-space()='Create an account']
+         *          Verify that the email is already registered "An account using this email address has already been registered.
+         *          Please enter a valid password or request a new one."
+         *   4)Click email address and enter valid email address
+//         * 5)Click register //span[text()='Register']
+         *        Verify that user missed to field the required fields
+         *        There are 3 errors
+         *        1.lastname is required.
+         *        2.firstname is required.
+         *        3.passwd is required.
+         * 6)Enter first name //input[@id='customer_firstname']
+         * 7)Enter last name //input[@id='customer_lastname']
+         * 8)Enter less than 5 character //input[@id='passwd']
+         * 9)Click register //span[text()='Register']
+         *          Verify that user needed to enter minimum 5 character
+         *          1.There is 1 error
+         *          passwd is invalid.
+         */
+
+        @Test
+        public void invalidEmail(){
+            scp.invalidEmail();
+        }
+
     }
 
 
