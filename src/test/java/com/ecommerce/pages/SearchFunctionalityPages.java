@@ -43,8 +43,7 @@ public class SearchFunctionalityPages {
         Utility.waits(3);
         scrollUp(driver);
         // Verify that relevant search results are displayed
-        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@class='product_list grid row']"));
-        for (WebElement searchResult : searchResults) {
+        for (WebElement searchResult : sfe.searchResults) {
             String productTitle = searchResult.findElement(By.cssSelector("h5>a")).getText();
             if (!productTitle.contains("Dress")) {
                 System.out.println("Error: Invalid search result - " + productTitle);
@@ -89,10 +88,7 @@ public class SearchFunctionalityPages {
          *Clear the search box and enter an invalid search term
          *Click on the search button again
          *Verify that error message is displayed
-         WebElement errorMessage = driver.findElement(By.xpath("//p[@class='alert alert-warning']"));
-         if (!errorMessage.getText().contains("No results were found for your search")) {
-         System.out.println("Error: Invalid error message - " + errorMessage.getText());
-          */
+        */
         validSearching();
         sfe = new SearchFunctionalityElements(driver);
          scrollUp(driver);
