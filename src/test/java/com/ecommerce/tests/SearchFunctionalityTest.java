@@ -19,21 +19,8 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class SearchFunctionalityTest {
-    WebDriver driver;
-    SearchFunctionalityPages sfp;
+public class SearchFunctionalityTest extends TestBase{
     public String url = ConfigReader.getProperty("url");
-
-    @BeforeClass
-    public void browserSetup() {
-        driver = WebDriverManager.chromedriver().create();
-        //driver = WebDriverManager.chromedriver().setup();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url);
-        sfp = new SearchFunctionalityPages(driver);
-    }
-
 
     @Test
     public void validSearching() {
@@ -46,7 +33,8 @@ public class SearchFunctionalityTest {
          * check all the expected result to be Dress items
          *product name have Dress
          * */
-        sfp.validSearching();
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        getAppLibrary().getPage().getSfp().validSearching();
     }
 
     @Test
@@ -57,20 +45,21 @@ public class SearchFunctionalityTest {
          * select price low to hight
          * check the prices result is sorted
          */
-        sfp.sortTheResults();
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        getAppLibrary().getPage().getSfp().sortTheResults();
     }
 
     @Test
     public void invalidSearching() {
         /***********************invalidSearching
-         * scrollUp in to search box
-         * go back to search box
-         *Clear the search box and enter an invalid search term"XYZ"
+         * * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * to search button
+         * enter invalid search "xzy"
          *Click on the search button
          *Verify that error message is displayed
          */
-        sfp.invalidSearching();
+        System.out.println("url = " + url);
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        getAppLibrary().getPage().getSfp().invalidSearching();
     }
-
-
 }

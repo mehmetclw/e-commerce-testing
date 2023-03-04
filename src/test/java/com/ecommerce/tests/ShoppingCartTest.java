@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-    public class ShoppingCartTest {
+    public class ShoppingCartTest extends TestBase{
 
         /*Acceptance Criteria:
 
@@ -25,18 +25,17 @@ import static org.testng.AssertJUnit.assertTrue;
 
          c. Verify that the cart total is calculated correctly.*/
 
-
         /**
          * Happy Path Story
          * <p>
          * *1)Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
          * 2)Click sign in
          * 3)Fill the requirements field
-         * Enter the email address
+         *        Enter the email address
          * Enter the password
          * Click on signInButton
          * Verify title of page is matching
-         * 4)Click "Women" section
+         * 4)Click "Women" Link
          * 5)Check if the actualTitle and expectedTitle is same
          * 6)Add a product to the cart and verify that it is added correctly.
          * Click on Faded Short Sleeves T-shirt
@@ -60,30 +59,48 @@ import static org.testng.AssertJUnit.assertTrue;
          * Check if the total price is matching with price that shown on website "$26.00"
          */
 
-        WebDriver driver;
-
-        ShoppingCartPages scp;
         public String url = ConfigReader.getProperty("url");
         public String email = ConfigReader.getProperty("emailAddress");
         public String passwordKey = ConfigReader.getProperty("passwordKey");
 
-        @BeforeMethod
-        public void browserSetup() {
-            //Setting the browser
-            driver = WebDriverManager.chromedriver().create();
-            //driver = WebDriverManager.chromedriver().setup();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            driver.get(url);
-            scp = new ShoppingCartPages(driver);
-        }
-
         @Test
         public void addAndRemoveToCart() {
+            getAppLibrary().getFlowsLibrary().navigateToUrl(url);
             if (driver != null)
-                scp.addAndRemoveToCart();
+                getAppLibrary().getPage().getScp().addAndRemoveToCart();
             else System.out.println("Driver is null");
         }
+
+        //Negative Path Story
+        /**
+         * 1)Go to home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+         * 2)Click Sign in //a[normalize-space()='Sign in']
+         *          Enter email address that have already been registered //input[@id='email_create']
+         *          3)Click create an account //span[normalize-space()='Create an account']
+         *          Verify that the email is already registered "An account using this email address has already been registered.
+         *          Please enter a valid password or request a new one."
+         *   4)Click email address and enter valid email address
+//         * 5)Click register //span[text()='Register']
+         *        Verify that user missed to field the required fields
+         *        There are 3 errors
+         *        1.lastname is required.
+         *        2.firstname is required.
+         *        3.passwd is required.
+         * 6)Enter first name //input[@id='customer_firstname']
+         * 7)Enter last name //input[@id='customer_lastname']
+         * 8)Enter less than 5 character //input[@id='passwd']
+         * 9)Click register //span[text()='Register']
+         *          Verify that user needed to enter minimum 5 character
+         *          1.There is 1 error
+         *          passwd is invalid.
+         */
+
+        @Test
+        public void invalidEmail(){
+            driver.get(url);
+            getAppLibrary().getPage().getScp().invalidEmail();
+        }
+
     }
 
 

@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 import java.util.List;
 
-public class ItemDetailsVerificationTest {
+public class ItemDetailsVerificationTest extends TestBase{
     /** @Test pageDetailsVerif()
      * 1- Go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
      * 2- Click sign in
@@ -49,34 +49,17 @@ public class ItemDetailsVerificationTest {
      * 11-Check the text at checkout page --> Expected is : " "
      */
     String url = ConfigReader.getProperty("url");
-    WebDriver driver;
-    ItemDetailsVerificationPages idv;
     SoftAssert sf = new SoftAssert();
-
-    @BeforeMethod
-    void browserSetup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(url);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        idv = new ItemDetailsVerificationPages(driver);
-        idv.setup();
-
-    }
-
-    @AfterMethod
-    void tearDown() {
-        driver.quit();
-    }
 
     @Test
     public void pageDetailsVerif() {
-        idv.pageDetailsVerif();
+        getAppLibrary().getPage().getIdv().setup();
+        getAppLibrary().getPage().getIdv().pageDetailsVerif();
     }
 
     @Test
     public void windowDetailsVerif() {
-        idv.windowDetailsVerif();
+        getAppLibrary().getPage().getIdv().setup();
+        getAppLibrary().getPage().getIdv().windowDetailsVerif();
     }
 }

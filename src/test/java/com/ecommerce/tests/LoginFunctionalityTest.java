@@ -1,5 +1,6 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.utility.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,21 +10,14 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
-public class LoginFunctionalityTest {
-    WebDriver driver;
+public class LoginFunctionalityTest extends TestBase{
+
     SoftAssert sf = new SoftAssert();
-
-    @BeforeMethod
-    public void setup() {
-        driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        driver.get("https://ecommerce.yosemiteint.com/prestashop/index.php");
-    }
-
+    public String url = ConfigReader.getProperty("url");
 
     @Test(groups = {"smoke","regression"})
     public void login() throws InterruptedException {
-
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         WebElement signInLink = driver.findElement(By.className("login"));
         signInLink.click();
         Thread.sleep(2000);
