@@ -3,6 +3,7 @@ package com.ecommerce.tests;
 import com.ecommerce.dataprovider.DataProviders;
 import com.ecommerce.pages.UserRegistrationPages;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -11,9 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class UserRegistrationWitDataProviderTest {
-    WebDriver driver;
-    UserRegistrationPages urp;
+public class UserRegistrationWitDataProviderTest extends TestBase{
     public String url = ConfigReader.getProperty("url");
     /**
      * Enter valid details and check if the user is able to register successfully.
@@ -32,21 +31,15 @@ public class UserRegistrationWitDataProviderTest {
      * year  //select[@id='years']
      * click register
      */
-    @BeforeClass
-    public void browserSetup() {
-        driver = WebDriverManager.chromedriver().create();
-        //driver = WebDriverManager.chromedriver().setup();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url);
-        urp = new UserRegistrationPages(driver);
-    }
+
 
     @Test (dataProvider = "userCredentials")
     public void createNewAccount(String userEmail, String userPassword,String firstName,String lastName) {
-        if (driver != null)
-            urp.createNewAccount( userEmail,  userPassword, firstName, lastName);
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        if (Driver.getDriver() != null)
+            getAppLibrary().getPage().getUrp().createNewAccount( userEmail,  userPassword, firstName, lastName);
         else System.out.println("Driver is null");
+
     }
 
     @DataProvider(name = "userCredentials")
@@ -63,8 +56,9 @@ public class UserRegistrationWitDataProviderTest {
     @Test (dataProvider = "registration", dataProviderClass = DataProviders.class,
     description = "Using couple of parameters")
     public void createNewAccount1(String userEmail, String userPassword,String firstName,String lastName) {
-        if (driver != null)
-            urp.createNewAccount( userEmail,  userPassword, firstName, lastName);
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        if (Driver.getDriver() != null)
+            getAppLibrary().getPage().getUrp().createNewAccount( userEmail,  userPassword, firstName, lastName);
         else System.out.println("Driver is null");
     }
 

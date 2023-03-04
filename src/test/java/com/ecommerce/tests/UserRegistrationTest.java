@@ -14,9 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class UserRegistrationTest {
-    WebDriver driver;
-    UserRegistrationPages urp;
+public class UserRegistrationTest extends TestBase{
     public String url = ConfigReader.getProperty("url");
     /**
      * Enter valid details and check if the user is able to register successfully.
@@ -35,20 +33,12 @@ public class UserRegistrationTest {
      * year  //select[@id='years']
      * click register
      */
-    @BeforeClass
-    public void browserSetup() {
-        driver = WebDriverManager.chromedriver().create();
-        //driver = WebDriverManager.chromedriver().setup();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url);
-        urp = new UserRegistrationPages(driver);
-    }
 
     @Test
     public void createNewAccount() {
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         if (driver != null)
-            urp.createNewAccount();
+            getAppLibrary().getPage().getUrp().createNewAccount();
         else System.out.println("Driver is null");
     }
 

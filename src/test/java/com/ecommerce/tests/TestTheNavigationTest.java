@@ -1,20 +1,16 @@
 package com.ecommerce.tests;
 
-import com.ecommerce.pages.TestTheNavigationPages;
 import com.ecommerce.utility.ConfigReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TestTheNavigationTest {
+public class TestTheNavigationTest extends TestBase{
 
     /* Description:
 Test the navigation
 URL: https://ecommerce.yosemiteint.com/prestashop/index.php
 
 Acceptance Criteria:
-a. Check if all the links in the navigation bar work correctly.
+a . Check if all the links in the navigation bar work correctly.
 b. Verify that the user is redirected to the correct page when clicking on a link.
 
      */
@@ -47,37 +43,28 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
      * a- Click on the T-Shirts tab
      * b- Verify that is correct page with header
      **/
-
-    WebDriver driver;
-    TestTheNavigationPages tnp;
     public String url = ConfigReader.getProperty("url");
 
-    @BeforeClass
-    public void browserSetup() {
-        driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        driver.get(url);
-        tnp = new TestTheNavigationPages(driver);
-    }
-
     @Test
-
     public void checkingWomenBar() {
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         if(driver !=null)
-            tnp.checkingWomenBar();
+            getAppLibrary().getPage().getTnp().checkingWomenBar();
         else System.out.println("Driver is null");
 
     }
     @Test
     public void checkingDressBar() {
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         if(driver !=null)
-            tnp.checkingDressBar();
+            getAppLibrary().getPage().getTnp().checkingDressBar();
         else System.out.println("Driver is null");
         }
     @Test
     public void checkingTShirtsBar() {
+        driver.get(url);
         if(driver !=null)
-            tnp.checkingTShirtsBar();
+            getAppLibrary().getPage().getTnp().checkingTShirtsBar();
         else System.out.println("Driver is null");
     }
 }

@@ -1,5 +1,6 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -9,20 +10,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TestingTestNGAnnotationsTest {
-    WebDriver driver;
+public class TestingTestNGAnnotationsTest extends TestBase{
     SoftAssert sf = new SoftAssert();
-
-    @BeforeMethod
-    public void setup() {
-        driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        driver.get("https://ecommerce.yosemiteint.com/prestashop/index.php");
-    }
+    public String url = ConfigReader.getProperty("url");
 
     @Test(description = "EC-40 | Login functionality testing")
     @Parameters({"browser", "userName"})
-    public void parameterTest(String browser, String userName) {
+    public void parameterTest(@Optional String browser, @Optional String userName) {
         System.out.println("userName = " + userName);
         System.out.println("browser = " + browser);
         Utility.waits(4);
@@ -39,7 +33,7 @@ public class TestingTestNGAnnotationsTest {
 
     @Test(dependsOnMethods = {"test6"})
     @Parameters({"email", "password"})
-    public void test2(String email, String password) {
+    public void test2(@Optional String email,@Optional String password) {
         System.out.println("This is test2");
         System.out.println("email = " + email);
         System.out.println("password = " + password);

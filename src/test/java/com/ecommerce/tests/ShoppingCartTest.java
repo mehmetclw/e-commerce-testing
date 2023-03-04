@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-    public class ShoppingCartTest {
+    public class ShoppingCartTest extends TestBase{
 
         /*Acceptance Criteria:
 
@@ -24,7 +24,6 @@ import static org.testng.AssertJUnit.assertTrue;
          b. Remove a product from the cart and verify that it is removed correctly.
 
          c. Verify that the cart total is calculated correctly.*/
-
 
         /**
          * Happy Path Story
@@ -60,28 +59,15 @@ import static org.testng.AssertJUnit.assertTrue;
          * Check if the total price is matching with price that shown on website "$26.00"
          */
 
-        WebDriver driver;
-
-        ShoppingCartPages scp;
         public String url = ConfigReader.getProperty("url");
         public String email = ConfigReader.getProperty("emailAddress");
         public String passwordKey = ConfigReader.getProperty("passwordKey");
 
-        @BeforeMethod
-        public void browserSetup() {
-            //Setting the browser
-            driver = WebDriverManager.chromedriver().create();
-            //driver = WebDriverManager.chromedriver().setup();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            driver.get(url);
-            scp = new ShoppingCartPages(driver);
-        }
-
         @Test
         public void addAndRemoveToCart() {
+            getAppLibrary().getFlowsLibrary().navigateToUrl(url);
             if (driver != null)
-                scp.addAndRemoveToCart();
+                getAppLibrary().getPage().getScp().addAndRemoveToCart();
             else System.out.println("Driver is null");
         }
 
@@ -111,7 +97,8 @@ import static org.testng.AssertJUnit.assertTrue;
 
         @Test
         public void invalidEmail(){
-            scp.invalidEmail();
+            driver.get(url);
+            getAppLibrary().getPage().getScp().invalidEmail();
         }
 
     }

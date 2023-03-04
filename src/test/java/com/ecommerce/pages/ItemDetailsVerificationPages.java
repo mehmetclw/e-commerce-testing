@@ -1,6 +1,7 @@
 package com.ecommerce.pages;
 
 import com.ecommerce.elements.ItemDetailsVerificationElements;
+import com.ecommerce.tests.TestBase;
 import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -14,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 import java.util.List;
 
-public class ItemDetailsVerificationPages {
+public class ItemDetailsVerificationPages extends TestBase {
 
     WebDriver driver;
     ItemDetailsVerificationElements idv;
