@@ -1,6 +1,6 @@
 package com.ecommerce.dataprovider;
 
-import com.ecommerce.utility.ReadExcelLib;
+import com.ecommerce.utility.library.ReadExcelLib;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
