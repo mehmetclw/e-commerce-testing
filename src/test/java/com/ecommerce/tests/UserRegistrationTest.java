@@ -1,5 +1,6 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.dataprovider.DataProviderTest;
 import com.ecommerce.pages.UserRegistrationPages;
 import com.ecommerce.utility.ConfigReader;
 import com.github.javafaker.Faker;
@@ -52,6 +53,16 @@ public class UserRegistrationTest extends TestBase{
         System.out.println("fake.name().name() = " + fake.name().name());
         System.out.println("email = " + email);
         System.out.println("name = " + name);
+    }
+
+    @Test(dataProvider = "dataProvider1", dataProviderClass = DataProviderTest.class)
+    public void test5(String name, String email, String password) {
+
+        System.out.println(name);
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println("===========");
+
     }
 
 }
