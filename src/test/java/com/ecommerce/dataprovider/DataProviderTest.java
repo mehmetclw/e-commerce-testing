@@ -5,13 +5,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class DataProviderTest {
-    @DataProvider
+    @DataProvider(name = "dataProvider1")
     public Object[][] dataProvider() {
 
         ReadExcelLib excel = new ReadExcelLib();
-        String file = System.getProperty("user.dir") + "src/test/resources/data/TestData.xlsx";
+        String file = System.getProperty("user.dir") + "/src/test/resources/data/TestData.xlsx";
         return excel.Get_Excel_Data(file, "Sheet1", 3);
     }
+
 
     @Test(dataProvider = "dataProvider1", dataProviderClass = DataProviderTest.class)
     public void test5(String name, String email, String password) {
@@ -22,5 +23,4 @@ public class DataProviderTest {
         System.out.println("===========");
 
     }
-
 }
