@@ -5,7 +5,6 @@ import com.ecommerce.elements.TestShippingOptionsElements;
 import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
-import com.ecommerce.utility.library.AppLibrary;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -89,12 +88,5 @@ public class TestShippingOptionsPages {
         Assert.assertEquals(tsoe.totalProducts.getText(),"$33.02","product total not match");
         Assert.assertEquals(tsoe.totalShipping.getText(),"$7.00","the shipping total is not matching");
         Assert.assertEquals(tsoe.Total.getText(),"$40.02","the Total with the shipping is not match");
-
-
-
-
     }
-
-
-
 }
