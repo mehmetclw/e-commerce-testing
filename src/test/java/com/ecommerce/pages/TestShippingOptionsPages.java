@@ -37,8 +37,6 @@ public class TestShippingOptionsPages {
         *  check if the shipping is compatible with the shipping options
         *
         *  */
-        tsoe=new TestShippingOptionsElements(driver);
-
         tsoe=new TestShippingOptionsElements();
         tsoe.clickSignIn.click();
         tsoe.emailAddress.sendKeys(email);
@@ -48,8 +46,6 @@ public class TestShippingOptionsPages {
         tsoe.signInButton.click();
         Utility.waits(2);
         tsoe.clickWomenLink.click();
-        Utility.waits(2);
-
         Utility.waits(2);
         tsoe.clickTshirtLink.click();
         Utility.scrollTo( tsoe.clickTshirtLink);
@@ -93,5 +89,12 @@ public class TestShippingOptionsPages {
         Assert.assertEquals(tsoe.totalProducts.getText(),"$33.02","product total not match");
         Assert.assertEquals(tsoe.totalShipping.getText(),"$7.00","the shipping total is not matching");
         Assert.assertEquals(tsoe.Total.getText(),"$40.02","the Total with the shipping is not match");
+
+
+
+
     }
+
+
+
 }
