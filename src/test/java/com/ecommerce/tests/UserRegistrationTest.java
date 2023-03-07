@@ -3,6 +3,7 @@ package com.ecommerce.tests;
 import com.ecommerce.dataprovider.DataProviderTest;
 import com.ecommerce.pages.UserRegistrationPages;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -38,7 +39,7 @@ public class UserRegistrationTest extends TestBase{
     @Test
     public void createNewAccount() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if (driver != null)
+        if (Driver.getDriver() != null)
             getAppLibrary().getPage().getUrp().createNewAccount();
         else System.out.println("Driver is null");
     }

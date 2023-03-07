@@ -1,6 +1,7 @@
 package com.ecommerce.elements;
 
 
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class ItemDetailsVerificationElements {
     //This is going to initialize the page objects
-    public ItemDetailsVerificationElements(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public ItemDetailsVerificationElements() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(className = "login")

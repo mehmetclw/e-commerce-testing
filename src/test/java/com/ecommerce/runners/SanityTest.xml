@@ -1,10 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Smoke Suite" >
+<suite name="Smoke Suite" parallel="classes" thread-count="5">
 
-    <parameter name="userName" value="Test User"></parameter>
-    <parameter name="browser" value="chrome"></parameter>
-    <parameter name="email" value="abc@gmail.com"></parameter>
-    <parameter name="password" value="abc1234"></parameter>
+    <parameter name="userName" value="Test User"/>
+    <parameter name="browser" value="chrome"/>
+    <parameter name="email" value="abc@gmail.com"/>
+    <parameter name="password" value="abc1234"/>
+    <listeners>
+       <!-- <listener class-name="com.ecommerce.tests.TestListenerExamples"></listener>-->
+        <listener class-name="com.ecommerce.utility.TestListeners"/>
+    </listeners>
     <test name="Smoke Test"  >
         <classes>
             <class name="com.ecommerce.tests.TestingTestNGAnnotationsTest"/>

@@ -1,6 +1,7 @@
 package com.ecommerce.tests;
 
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import org.testng.annotations.Test;
 
 public class TestTheNavigationTest extends TestBase{
@@ -48,7 +49,7 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
     @Test
     public void checkingWomenBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if(driver !=null)
+        if(Driver.getDriver() !=null)
             getAppLibrary().getPage().getTnp().checkingWomenBar();
         else System.out.println("Driver is null");
 
@@ -56,14 +57,14 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
     @Test
     public void checkingDressBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if(driver !=null)
+        if(Driver.getDriver() !=null)
             getAppLibrary().getPage().getTnp().checkingDressBar();
         else System.out.println("Driver is null");
         }
     @Test
     public void checkingTShirtsBar() {
-        driver.get(url);
-        if(driver !=null)
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+        if(Driver.getDriver() !=null)
             getAppLibrary().getPage().getTnp().checkingTShirtsBar();
         else System.out.println("Driver is null");
     }

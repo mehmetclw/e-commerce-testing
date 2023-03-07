@@ -1,19 +1,8 @@
 package com.ecommerce.tests;
 
-import com.ecommerce.pages.ItemDetailsVerificationPages;
 import com.ecommerce.utility.ConfigReader;
-import com.ecommerce.utility.Utility;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.time.Duration;
-import java.util.List;
 
 public class ItemDetailsVerificationTest extends TestBase{
     /** @Test pageDetailsVerif()
@@ -53,15 +42,16 @@ public class ItemDetailsVerificationTest extends TestBase{
 
     @Test
     public void pageDetailsVerif() {
-        getAppLibrary().getFlowsLibrary().navigateToUrl(ConfigReader.getProperty("url"));
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getIdv().setup();
         getAppLibrary().getPage().getIdv().pageDetailsVerif();
     }
 
     @Test
     public void windowDetailsVerif() {
-        getAppLibrary().getFlowsLibrary().navigateToUrl(ConfigReader.getProperty("url"));
+        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getIdv().setup();
         getAppLibrary().getPage().getIdv().windowDetailsVerif();
+        throw new RuntimeException("FAILED THE METHOD with THROW");
     }
 }

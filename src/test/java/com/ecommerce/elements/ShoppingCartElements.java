@@ -1,5 +1,6 @@
 package com.ecommerce.elements;
 
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,11 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
     public class ShoppingCartElements {
-        WebDriver driver;
+
         //This is going to initialize the page objects
-        public ShoppingCartElements(WebDriver driver){
-            this.driver=driver;
-            PageFactory.initElements(driver,this);
+        public ShoppingCartElements(){
+            PageFactory.initElements(Driver.getDriver(),this);
         }
 
         @FindBy(xpath = "//div[@class='header_user_info']/a")

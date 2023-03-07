@@ -1,5 +1,6 @@
 package com.ecommerce.elements;
 
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +10,8 @@ import javax.xml.xpath.XPath;
 import java.util.List;
 
 public class TestShippingOptionsElements {
-    public TestShippingOptionsElements(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public TestShippingOptionsElements() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
     WebDriver driver;
     @FindBy(xpath = "//div[@class='header_user_info']/a")

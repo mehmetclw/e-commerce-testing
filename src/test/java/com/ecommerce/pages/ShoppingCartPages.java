@@ -2,6 +2,7 @@ package com.ecommerce.pages;
 
 import com.ecommerce.elements.ShoppingCartElements;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -9,21 +10,14 @@ import org.testng.Assert;
 
 public class ShoppingCartPages {
 
-    WebDriver driver;
     ShoppingCartElements sce;
-
-    public ShoppingCartPages(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     public String email = ConfigReader.getProperty("emailAddress");
     public String passwordKey = ConfigReader.getProperty("passwordKey");
 
-
     public void addAndRemoveToCart() {
         //Filling required validate credential
-        sce = new ShoppingCartElements(driver);
+        sce = new ShoppingCartElements();
         sce.clickSignIn.click();
         sce.emailAdress.sendKeys(email);
         Utility.waits(2);
@@ -34,25 +28,24 @@ public class ShoppingCartPages {
 
         //Checking if the titles are equal
         String expectedTitle = "My account - My Store";
-        String actualTitle = driver.getTitle();
+        String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Title didn't match");
-
 
         //Clicking on Women link
         sce.clickWomenLink.click();
 
         //Verifying the title
         String expectedTitleInTitle = "Women - My Store";
-        String actualTitleInLine = driver.getTitle();
+        String actualTitleInLine = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Titles are matching");
 
         Utility.waits(2);
         sce.clickTshirtLink.click();
-        Utility.scrollTo(driver, sce.clickTshirtLink);
+        Utility.scrollTo( sce.clickTshirtLink);
 
 
         //Adding first products
-        driver.switchTo().frame(0);
+        Driver.getDriver().switchTo().frame(0);
         sce.chooseNumberOfTshirt.click();
         sce.chooseNumberOfTshirt.clear();
         sce.chooseNumberOfTshirt.sendKeys("2");
@@ -61,7 +54,7 @@ public class ShoppingCartPages {
         sce.chooseSize_S.click();
         sce.chooseColor.click();
         sce.addToCart.click();
-        driver.navigate().back();
+        Driver.getDriver().navigate().back();
 
         //Adding second product
         sce.clickDress.get(2).click();
@@ -70,17 +63,17 @@ public class ShoppingCartPages {
 
         //Verifying if the titles are equal
         String expectedInLineTitle = "Printed Dress - My Store";
-        String actualInLineTitle = driver.getTitle();
+        String actualInLineTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualInLineTitle, expectedInLineTitle, "Titles are not matching");
         Utility.waits(2);
 
         sce.proceedToCheckOut.click();
         //Verifying if the title is true
-        Boolean checkPageofProceedCalc = driver.getTitle().equalsIgnoreCase("Order - My Store");
+        Boolean checkPageofProceedCalc = Driver.getDriver().getTitle().equalsIgnoreCase("Order - My Store");
         Assert.assertTrue(checkPageofProceedCalc);
 
         //Deleting the product
-        Utility.scrollToCenter(driver,sce.proceedToCheckOut);
+        Utility.scrollToCenter(sce.proceedToCheckOut);
         sce.clickDeleteButton.get(0).click();
         Utility.waits(5);
 
@@ -98,7 +91,7 @@ public class ShoppingCartPages {
     }
 
     public void invalidEmail(){
-        sce = new ShoppingCartElements(driver);
+        sce = new ShoppingCartElements();
 
         //Creating account
         sce.clickSignInLink.click();
@@ -142,11 +135,5 @@ public class ShoppingCartPages {
         String actualTitle2 = sce.checkInvalidPassword.getText();
         String expectedTitle2 = "passwd is invalid.";
         Assert.assertEquals(actualTitle2, expectedTitle2, "NOT matching");
-
-
-
-
-
-
     }
 }

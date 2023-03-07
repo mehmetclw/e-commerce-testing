@@ -2,23 +2,14 @@ package com.ecommerce.pages;
 
 import com.ecommerce.elements.UserRegistrationElements;
 import com.ecommerce.utility.ConfigReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.ecommerce.utility.Driver;
+import com.ecommerce.utility.Utility;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.BeforeMethod;
 
-import java.time.Duration;
+public class UserRegistrationPages extends Utility {
 
-public class UserRegistrationPages {
-    WebDriver driver;
     UserRegistrationElements ure;
-    public UserRegistrationPages(WebDriver driver) {
-        this.driver=driver;
-    }
 
     /**
      * BrowserSetup
@@ -27,32 +18,27 @@ public class UserRegistrationPages {
     public String password = "";
 
     public void createNewAccount() {
-        ure = new UserRegistrationElements(driver);
-        ure.signInButton.click();
-        ure.emailAddress.click();
-        ure.emailAddress.sendKeys(email);
-        ure.createAccountButton.click();
-        ure.mrsCheckBox.click();
-        ure.firstName.click();
-        ure.firstName.sendKeys("elif");
-        ure.lastName.click();
-        ure.lastName.sendKeys("topal");
-        ure.password.sendKeys("123elif");
+        ure = new UserRegistrationElements();
+        clickElement(ure.signInButton);
+        clickElement(ure.emailAddress);
+        sendKeyToElement(ure.emailAddress, email);
+        clickElement(ure.createAccountButton);
+        clickElement(ure.mrsCheckBox);
+        clickElement(ure.firstName);
+        sendKeyToElement(ure.firstName, "elif");
+        clickElement(ure.lastName);
+        sendKeyToElement(ure.lastName, "topal");
+        sendKeyToElement(ure.password, "123elif");
 
-        Select select = new Select(ure.day);
-        select.selectByIndex(0);
-        select.selectByValue("25");
-        Select select2 = new Select(ure.month);
-        select2.selectByIndex(0);
-        select2.selectByValue("12");
-        Select select3 = new Select(ure.year);
-        select3.selectByIndex(0);
-        select3.selectByValue("1990");
-        ure.register.click();
+        selectElementByValue(ure.day, "25");
+        selectElementByIndex(ure.month, 1);
+        selectElementByValue(ure.year, "1990");
+        clickElement( ure.register);
+
     }
 
-    public void createNewAccount(String userEmail, String userPassword,String firstName,String lastName) {
-        ure = new UserRegistrationElements(driver);
+    public void createNewAccount(String userEmail, String userPassword, String firstName, String lastName) {
+        ure = new UserRegistrationElements();
         ure.signInButton.click();
         ure.emailAddress.click();
         ure.emailAddress.sendKeys(userEmail);
@@ -74,6 +60,6 @@ public class UserRegistrationPages {
         select3.selectByIndex(0);
         select3.selectByValue("1990");
         ure.register.click();
-        driver.findElement(By.xpath("//a[@class='logout']")).click();
+        Driver.getDriver().findElement(By.xpath("//a[@class='logout']")).click();
     }
 }

@@ -24,16 +24,16 @@ public class HomePageTest extends TestBase{
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
        //Verify search button is clickable
         WebElement searchButton= Driver.getDriver().findElement(By.xpath("//form/button[@type='submit']"));
-        boolean check=Utility.isClickable(Driver.getDriver(),searchButton,10);
+        boolean check=Utility.isClickable(searchButton,10);
         Assert.assertTrue(check);
 
         //Scrolling to a specific element and click on it.
         WebElement image=Driver.getDriver().findElement(By.xpath("(//img[@class='item-img '])[7]"));
         //Utility.scrollTo(driver,image);
-        Utility.scrollToCenter(Driver.getDriver(),image);
+        Utility.scrollToCenter(image);
         Utility.waits(4);
         WebElement myAccountLink= Driver.getDriver().findElement(By.xpath("//a[@title='Manage my customer account']"));
-        Utility.scrollTo(Driver.getDriver(),myAccountLink);
+        Utility.scrollTo(myAccountLink);
         Utility.waits(4);
         myAccountLink.click();
 
@@ -51,11 +51,11 @@ public class HomePageTest extends TestBase{
     public  void checkHomePageProducts(){
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         List<WebElement> homePageProducts= Driver.getDriver().findElements(By.xpath("//ul[@id='blocknewproducts']/li"));
-        Utility.scrollToCenter(Driver.getDriver(),homePageProducts.get(0));
+        Utility.scrollToCenter(homePageProducts.get(0));
        // String[] expectedPrice={"$50.99","$26.00","$30.00","$27.00"};
         //Try to verify each price is as expected after hoverover
         for (WebElement product:homePageProducts){
-            Utility.hoverOver(Driver.getDriver(),product,1);
+            Utility.hoverOver(product,1);
         }
     }
 }
