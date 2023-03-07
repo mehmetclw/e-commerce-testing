@@ -13,6 +13,7 @@ public class PageLibrary {
     private ItemDetailsVerificationPages idv;
     private UserRegistrationNewPages urnp;
     private TestShippingOptionsPages tsop;
+    private AccountManagementFunctionalityPages amfp;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -22,6 +23,7 @@ public class PageLibrary {
         idv = new ItemDetailsVerificationPages();
         urnp =new UserRegistrationNewPages();
         tsop=new TestShippingOptionsPages();
+        amfp=new AccountManagementFunctionalityPages();
     }
 
     public UserRegistrationPages getUrp() {
@@ -49,4 +51,10 @@ public class PageLibrary {
     }
     public TestShippingOptionsPages getTsop(){
         return tsop;}
+    public AccountManagementFunctionalityPages getAmfp(){
+        return amfp;
+    }
+
 }
+
+
