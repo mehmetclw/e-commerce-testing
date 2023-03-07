@@ -53,12 +53,14 @@ public class ItemDetailsVerificationTest extends TestBase{
 
     @Test
     public void pageDetailsVerif() {
+        getAppLibrary().getFlowsLibrary().navigateToUrl(ConfigReader.getProperty("url"));
         getAppLibrary().getPage().getIdv().setup();
         getAppLibrary().getPage().getIdv().pageDetailsVerif();
     }
 
     @Test
     public void windowDetailsVerif() {
+        getAppLibrary().getFlowsLibrary().navigateToUrl(ConfigReader.getProperty("url"));
         getAppLibrary().getPage().getIdv().setup();
         getAppLibrary().getPage().getIdv().windowDetailsVerif();
     }
