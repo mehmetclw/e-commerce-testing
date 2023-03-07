@@ -12,12 +12,6 @@ public class TestShippingOptionsTest extends TestBase {
     public void testAvailableShippingOptions(){
 
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-
         getAppLibrary().getPage().getTsop().testAvailableShippingOptions();
-
-
     }
-
-
-
 }

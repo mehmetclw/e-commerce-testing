@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public abstract class Driver {
+public class Driver {
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
     /**
@@ -31,6 +32,8 @@ public abstract class Driver {
      * So in the entire project we used single driver.
      * This is called Singleton Design pattern.
      * Another way to achive this is creating the class as Abstract.
+     *
+     * Driver.getDriver() ==> driver
      */
     private Driver() {}
     public static WebDriver getDriver() {
@@ -75,7 +78,9 @@ public abstract class Driver {
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driverPool.set(new FirefoxDriver());
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.setProfile(firefoxProfile());
+                    driverPool.set(new FirefoxDriver(firefoxOptions));
                     break;
                 case "firefox_headless":
                     WebDriverManager.firefoxdriver().setup();
@@ -114,7 +119,7 @@ public abstract class Driver {
                     break;
                 case "remote_firefox":
                     try {
-                        FirefoxOptions firefoxOptions = new FirefoxOptions();
+                         firefoxOptions = new FirefoxOptions();
                         firefoxOptions.setCapability("platform", Platform.ANY);
                         driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444//wd/hub"), firefoxOptions));
                     } catch (Exception e) {
@@ -126,9 +131,28 @@ public abstract class Driver {
         //return corresponded to thread id webDriver object
         return driverPool.get();
     }
+    public static FirefoxProfile firefoxProfile() {
 
+        //Added for download template settings to change the file location
+        FirefoxProfile firefoxProfile = new FirefoxProfile();
+
+        try {
+            //download directory path
+            firefoxProfile.setPreference("browser.download.folderList", 2);
+            firefoxProfile.setPreference("browser.download.manager.showWhenStarting", false);
+            firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+                    "text/csv,application/x-msexcel,application/excel,application/x-excel,application/vnd.ms-excel,image/png,image/jpeg,text/html,text/plain,application/msword,application/xml");
+        } catch (Exception e) {
+
+            System.out.println("Profile can't be configured for Firefox.");
+        }
+        return firefoxProfile;
+    }
     public static void close() {
-        //DriverPool.get().quit();
-        driverPool.remove();
+        if (driverPool.get() != null) {
+            driverPool.get().close();
+            driverPool.get().quit();
+            driverPool.remove();
+        }
     }
 }

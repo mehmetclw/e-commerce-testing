@@ -1,5 +1,6 @@
 package com.ecommerce.elements;
 
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestTheNavigationElements {
     //This is going to initialize the page objects
-    public TestTheNavigationElements(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public TestTheNavigationElements() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
         @FindBy(xpath = "(//a[@title='Women'])[1]")
         public WebElement womenTab;

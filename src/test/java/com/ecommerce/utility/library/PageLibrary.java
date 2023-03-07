@@ -1,10 +1,10 @@
 package com.ecommerce.utility.library;
 
 import com.ecommerce.pages.*;
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 
 public class PageLibrary {
-    private WebDriver driver;
     private UserRegistrationPages urp;
 
     public TestTheNavigationPages tnp;
@@ -14,15 +14,14 @@ public class PageLibrary {
     private UserRegistrationNewPages urnp;
     private TestShippingOptionsPages tsop;
 
-    public PageLibrary(WebDriver driver) {
-        this.driver = driver;
-        urp = new UserRegistrationPages(this.driver);
-        tnp = new TestTheNavigationPages(this.driver);
-        scp = new ShoppingCartPages(this.driver);
-        sfp = new SearchFunctionalityPages(this.driver);
-        idv = new ItemDetailsVerificationPages(this.driver);
-        urnp =new UserRegistrationNewPages(this.driver);
-        tsop=new TestShippingOptionsPages(this.driver);
+    public PageLibrary() {
+        urp = new UserRegistrationPages();
+        tnp = new TestTheNavigationPages();
+        scp = new ShoppingCartPages();
+        sfp = new SearchFunctionalityPages();
+        idv = new ItemDetailsVerificationPages();
+        urnp =new UserRegistrationNewPages();
+        tsop=new TestShippingOptionsPages();
     }
 
     public UserRegistrationPages getUrp() {

@@ -3,6 +3,7 @@ package com.ecommerce.pages;
 import com.beust.ah.A;
 import com.ecommerce.elements.TestShippingOptionsElements;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import com.ecommerce.utility.library.AppLibrary;
 import org.openqa.selenium.WebDriver;
@@ -11,15 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestShippingOptionsPages {
-    WebDriver driver;
-
     TestShippingOptionsElements tsoe;
 
-    public TestShippingOptionsPages(WebDriver driver){
-        //PageFactory.initElements(driver, this);
-        this.driver = driver;
-
-    }
     public String email = ConfigReader.getProperty("userEmailEC-4");
     public String passwordKey = ConfigReader.getProperty("userPasswordEC-4");
 
@@ -44,6 +38,8 @@ public class TestShippingOptionsPages {
         *
         *  */
         tsoe=new TestShippingOptionsElements(driver);
+
+        tsoe=new TestShippingOptionsElements();
         tsoe.clickSignIn.click();
         tsoe.emailAddress.sendKeys(email);
         Utility.waits(2);
@@ -53,9 +49,12 @@ public class TestShippingOptionsPages {
         Utility.waits(2);
         tsoe.clickWomenLink.click();
         Utility.waits(2);
+
+        Utility.waits(2);
         tsoe.clickTshirtLink.click();
-        Utility.scrollTo(driver, tsoe.clickTshirtLink);
-        driver.switchTo().frame(0);
+        Utility.scrollTo( tsoe.clickTshirtLink);
+        //Adding first products
+        Driver.getDriver().switchTo().frame(0);
         tsoe.chooseNumberOfTshirt.click();
         tsoe.chooseNumberOfTshirt.clear();
         tsoe.chooseNumberOfTshirt.sendKeys("2");
@@ -94,12 +93,5 @@ public class TestShippingOptionsPages {
         Assert.assertEquals(tsoe.totalProducts.getText(),"$33.02","product total not match");
         Assert.assertEquals(tsoe.totalShipping.getText(),"$7.00","the shipping total is not matching");
         Assert.assertEquals(tsoe.Total.getText(),"$40.02","the Total with the shipping is not match");
-
-
-
-
     }
-
-
-
 }

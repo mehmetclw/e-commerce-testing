@@ -3,6 +3,7 @@ package com.ecommerce.pages;
 import com.ecommerce.elements.ItemDetailsVerificationElements;
 import com.ecommerce.tests.TestBase;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -17,13 +18,8 @@ import java.util.List;
 
 public class ItemDetailsVerificationPages extends TestBase {
 
-    WebDriver driver;
     ItemDetailsVerificationElements idv;
     SoftAssert sf = new SoftAssert();
-
-    public ItemDetailsVerificationPages(WebDriver driver) {
-        this.driver = driver;
-    }
 
     /**
      * BrowserSetup
@@ -33,7 +29,7 @@ public class ItemDetailsVerificationPages extends TestBase {
 
     public void setup() {
 
-        idv = new ItemDetailsVerificationElements(driver);
+        idv = new ItemDetailsVerificationElements();
         idv.signInLink.click();
 
         //Filling the requirement fields with valid credentials
@@ -58,13 +54,13 @@ public class ItemDetailsVerificationPages extends TestBase {
 
         //Going to first product in the page
 
-        Utility.scrollToCenter(driver, idv.pageProducts.get(0));
-        Utility.hoverOver(driver, idv.pageProducts.get(0), 1);
+        Utility.scrollToCenter( idv.pageProducts.get(0));
+        Utility.hoverOver( idv.pageProducts.get(0), 1);
         idv.pageProducts.get(0).click();
 
         // Getting product details from the page
-        Utility.scrollToCenter(driver, idv.actualItemDescription);
-        String actualItemPageTitle = driver.getTitle();
+        Utility.scrollToCenter( idv.actualItemDescription);
+        String actualItemPageTitle = Driver.getDriver().getTitle();
         String actualItemName = idv.actualItemTitle.getText();
         String actualItemExplanation = idv.actualItemDescription.getText();
         String actualItemPrice = idv.actualItemSale.getText();
@@ -98,12 +94,12 @@ public class ItemDetailsVerificationPages extends TestBase {
         String expectedAddCheckText = "SHOPPING-CART SUMMARY";
 
         //Going to first product in the page
-        Utility.scrollToCenter(driver, idv.pageProducts.get(0));
+        Utility.scrollToCenter(idv.pageProducts.get(0));
         Utility.waits(1);
-        Utility.hoverOver(driver, idv.pageProducts.get(0), 1);
-        Assert.assertTrue(Utility.isElementVisible(driver, idv.quickview, 1));
+        Utility.hoverOver(idv.pageProducts.get(0), 1);
+        Assert.assertTrue(Utility.isElementVisible(idv.quickview, 1));
         idv.quickview.click();
-        driver.switchTo().frame(idv.iframeLocator);
+        Driver.getDriver().switchTo().frame(idv.iframeLocator);
 
         // Getting product details from the opening window
         String actualItemName = idv.actualItemWindowTitle.getText();

@@ -1,7 +1,8 @@
 package com.ecommerce.tests;
     import com.ecommerce.pages.ShoppingCartPages;
 import com.ecommerce.utility.ConfigReader;
-import com.ecommerce.utility.Utility;
+    import com.ecommerce.utility.Driver;
+    import com.ecommerce.utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -66,7 +67,7 @@ import static org.testng.AssertJUnit.assertTrue;
         @Test
         public void addAndRemoveToCart() {
             getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-            if (driver != null)
+            if (Driver.getDriver() != null)
                 getAppLibrary().getPage().getScp().addAndRemoveToCart();
             else System.out.println("Driver is null");
         }
@@ -97,7 +98,7 @@ import static org.testng.AssertJUnit.assertTrue;
 
         @Test
         public void invalidEmail(){
-            driver.get(url);
+            getAppLibrary().getFlowsLibrary().navigateToUrl(url);
             getAppLibrary().getPage().getScp().invalidEmail();
         }
 

@@ -2,6 +2,7 @@ package com.ecommerce.pages;
 
 import com.ecommerce.elements.SearchFunctionalityElements;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,11 +17,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class SearchFunctionalityPages {
-    WebDriver driver;
     SearchFunctionalityElements sfe;
-    public SearchFunctionalityPages (WebDriver driver) {
-        this.driver=driver;
-    }
+
     public String email = ConfigReader.getProperty("email");
     public String password = "";
 
@@ -34,11 +32,11 @@ public class SearchFunctionalityPages {
          * check all the expected result to be Dress items
          *product name have Dress
          * */
-        sfe = new SearchFunctionalityElements(driver);
+        sfe = new SearchFunctionalityElements();
         //* Verify you are in home page / Expected title="My Store"
         String expectedPageTitle = "My Store";
         // Get the title of the web page and compare to expected title
-        String pageTitle = driver.getTitle();
+        String pageTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(pageTitle, expectedPageTitle, "Page title not match");
         System.out.println("The user in the home page");
         //Go to search button and Enter "Dress" and click search
@@ -47,13 +45,13 @@ public class SearchFunctionalityPages {
         sfe.searchButton.click();
         //verify the search page id displayed
         String expectedSearchPageTitle = "Search - My Store";
-        String searchPageTitle = driver.getTitle();
+        String searchPageTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(searchPageTitle, expectedSearchPageTitle, "Search page not displayed");
         System.out.println("the user is in searching page ");
         Utility.waits(3);
-        scrollUp(driver);
+        scrollUp();
         // Verify that relevant search results are displayed
-        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@class='product_list grid row']"));
+        List<WebElement> searchResults = Driver.getDriver().findElements(By.xpath("//ul[@class='product_list grid row']"));
         for (WebElement searchResult : searchResults) {
             String productTitle = searchResult.findElement(By.cssSelector("h5>a")).getText();
             if (!productTitle.contains("Dress")) {
@@ -70,7 +68,7 @@ public class SearchFunctionalityPages {
          * check the prices result is sorted
          */
 
-        sfe = new SearchFunctionalityElements(driver);
+        sfe = new SearchFunctionalityElements();
         sfe.searchBox.click();
         sfe.searchBox.sendKeys("Dress");
         sfe.searchButton.click();
@@ -78,7 +76,7 @@ public class SearchFunctionalityPages {
         Select select= new Select(sfe.sortOption);
         select.selectByValue("price:asc");
         // Verify that search results are sorted by price correctly
-        List<WebElement> productPrices = driver.findElements(By.xpath("//ul[@id=product_list]"));
+        List<WebElement> productPrices = Driver.getDriver().findElements(By.xpath("//ul[@id=product_list]"));
         List<Float> prices = new ArrayList<Float>();
 
         for (WebElement productPrice : productPrices) {
@@ -102,7 +100,7 @@ public class SearchFunctionalityPages {
          *Click on the search button again
          *Verify that error message is displayed
           */
-        sfe = new SearchFunctionalityElements(driver);
+        sfe = new SearchFunctionalityElements();
         //Go to search button and Enter "xyz" and click search
         sfe.searchBox.click();
         sfe.searchBox.sendKeys("xyz");
@@ -117,8 +115,8 @@ public class SearchFunctionalityPages {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
-    public static void scrollUp(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+    public static void scrollUp() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, 0);");
     }
 }

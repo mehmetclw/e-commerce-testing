@@ -2,16 +2,14 @@ package com.ecommerce.pages;
 
 import com.ecommerce.elements.UserRegistrationElements;
 import com.ecommerce.utility.ConfigReader;
+import com.ecommerce.utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class UserRegistrationNewPages {
-    WebDriver driver;
+
     UserRegistrationElements ure;
-    public UserRegistrationNewPages(WebDriver driver) {
-        this.driver=driver;
-    }
 
     /**
      * BrowserSetup
@@ -20,7 +18,7 @@ public class UserRegistrationNewPages {
     public String password = "";
 
     public void createNewAccount() {
-        ure = new UserRegistrationElements(driver);
+        ure = new UserRegistrationElements();
         ure.signInButton.click();
         ure.emailAddress.click();
         ure.emailAddress.sendKeys(email);
@@ -45,7 +43,7 @@ public class UserRegistrationNewPages {
     }
 
     public void createNewAccount(String userEmail, String userPassword,String firstName,String lastName) {
-        ure = new UserRegistrationElements(driver);
+        ure = new UserRegistrationElements();
         ure.signInButton.click();
         ure.emailAddress.click();
         ure.emailAddress.sendKeys(userEmail);
@@ -67,6 +65,6 @@ public class UserRegistrationNewPages {
         select3.selectByIndex(0);
         select3.selectByValue("1990");
         ure.register.click();
-        driver.findElement(By.xpath("//a[@class='logout']")).click();
+        Driver.getDriver().findElement(By.xpath("//a[@class='logout']")).click();
     }
 }

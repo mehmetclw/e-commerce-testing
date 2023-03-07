@@ -1,5 +1,6 @@
 package com.ecommerce.tests;
 
+import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.library.AppLibrary;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -12,11 +13,9 @@ public class TestBase {
     private AppLibrary appLibrary;
     @BeforeMethod
     public void browserSetup() {
-        driver = WebDriverManager.chromedriver().create();
-        //driver = WebDriverManager.chromedriver().setup();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        appLibrary = new AppLibrary(driver);
+        Driver.getDriver().manage().window().maximize();
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        appLibrary = new AppLibrary();
     }
 
     public AppLibrary getAppLibrary() {
@@ -25,7 +24,7 @@ public class TestBase {
 
     @AfterMethod
     void tearDown() {
-        driver.quit();
+        Driver.close();
     }
 
 }
