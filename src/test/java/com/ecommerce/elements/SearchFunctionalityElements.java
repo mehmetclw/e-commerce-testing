@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class SearchFunctionalityElements {
     WebDriver driver;
     //This is going to initialize the page objects
@@ -16,12 +18,11 @@ public class SearchFunctionalityElements {
     public WebElement searchBox;
     @FindBy(name="submit_search")
     public WebElement searchButton;
-
-    @FindBy(xpath =" //ul[@class='product_list grid row']")
-    public WebElement searchResults;
     @FindBy(xpath = "//p[@class='alert alert-warning']")
     public WebElement errorMessage;
     @FindBy(css = "select[id='selectProductSort']")
-  public WebElement sortOption;
+    public WebElement sortOption;
+    @FindBy(xpath = "//ul[@class='product_list grid row']")
+    public List<WebElement> searchResults;
 
 }

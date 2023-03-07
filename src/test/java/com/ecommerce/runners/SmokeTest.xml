@@ -6,11 +6,13 @@
     <parameter name="email" value="abc@gmail.com"></parameter>
     <parameter name="password" value="abc1234"></parameter>
     <test name="Smoke Test"  >
+
         <classes>
             <class name="com.ecommerce.tests.TestingTestNGAnnotationsTest"/>
             <class name="com.ecommerce.tests.LoginFunctionalityTest"/>
             <class name="com.ecommerce.tests.ItemDetailsVerificationTest"/>
             <class name="com.ecommerce.tests.SearchFunctionalityTest"/>
+
         </classes>
     </test>
 </suite>
