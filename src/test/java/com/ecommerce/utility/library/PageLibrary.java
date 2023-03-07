@@ -12,6 +12,7 @@ public class PageLibrary {
     private SearchFunctionalityPages sfp;
     private ItemDetailsVerificationPages idv;
     private UserRegistrationNewPages urnp;
+    private TestShippingOptionsPages tsop;
 
     public PageLibrary(WebDriver driver) {
         this.driver = driver;
@@ -21,6 +22,7 @@ public class PageLibrary {
         sfp = new SearchFunctionalityPages(this.driver);
         idv = new ItemDetailsVerificationPages(this.driver);
         urnp =new UserRegistrationNewPages(this.driver);
+        tsop=new TestShippingOptionsPages(this.driver);
     }
 
     public UserRegistrationPages getUrp() {
@@ -46,4 +48,6 @@ public class PageLibrary {
     public UserRegistrationNewPages getUrnp() {
         return urnp;
     }
+    public TestShippingOptionsPages getTsop(){
+        return tsop;}
 }
