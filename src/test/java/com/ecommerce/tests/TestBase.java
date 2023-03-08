@@ -2,14 +2,13 @@ package com.ecommerce.tests;
 
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.library.AppLibrary;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
 public class TestBase {
-    WebDriver driver;
     private AppLibrary appLibrary;
     @BeforeMethod
     public void browserSetup() {

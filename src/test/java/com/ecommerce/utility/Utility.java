@@ -1,5 +1,6 @@
 package com.ecommerce.utility;
 
+import com.ecommerce.utility.library.FlowsLibrary;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Utility {
+public class Utility extends FlowsLibrary {
     public static boolean isClickable(WebElement element, int waitTime) {
         try {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(waitTime));
@@ -70,6 +71,11 @@ public class Utility {
     public void selectElementByIndex(WebElement element, int index){
         Select select =new Select(element);
         select.selectByIndex(index);
+    }
+
+    public String getTextElement(WebElement element){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+       return wait.until(ExpectedConditions.elementToBeClickable(element)).getText();
     }
 
 }

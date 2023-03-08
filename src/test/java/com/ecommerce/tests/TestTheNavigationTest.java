@@ -4,7 +4,7 @@ import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Driver;
 import org.testng.annotations.Test;
 
-public class TestTheNavigationTest extends TestBase{
+public class TestTheNavigationTest extends TestBase {
 
     /* Description:
 Test the navigation
@@ -15,6 +15,8 @@ a . Check if all the links in the navigation bar work correctly.
 b. Verify that the user is redirected to the correct page when clicking on a link.
 
      */
+    //TODO  CTRL + SHIFT + L  => ORGANIZE THE CODES => WINDOWS
+    //TODO  COMMAND + OPTION + L  => ORGANIZE THE CODES => MAC
 
     /**
      * Happy path story for Test Navigation;
@@ -46,26 +48,24 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
      **/
     public String url = ConfigReader.getProperty("url");
 
-    @Test
+    @Test(groups = "smoke",
+    description = "Click the Women link section")
     public void checkingWomenBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if(Driver.getDriver() !=null)
-            getAppLibrary().getPage().getTnp().checkingWomenBar();
-        else System.out.println("Driver is null");
-
+        getAppLibrary().getPage().getTnp().checkingWomenBar();
     }
-    @Test
+
+    @Test(groups = "regression",
+    description = "Verify the Dress Bar")
     public void checkingDressBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if(Driver.getDriver() !=null)
-            getAppLibrary().getPage().getTnp().checkingDressBar();
-        else System.out.println("Driver is null");
-        }
-    @Test
+        getAppLibrary().getPage().getTnp().checkingDressBar();
+    }
+
+    @Test(groups = {"smoke","regression","sanity"},
+    description = "Check Tshirts section")
     public void checkingTShirtsBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-        if(Driver.getDriver() !=null)
-            getAppLibrary().getPage().getTnp().checkingTShirtsBar();
-        else System.out.println("Driver is null");
+        getAppLibrary().getPage().getTnp().checkingTShirtsBar();
     }
 }

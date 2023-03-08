@@ -14,6 +14,8 @@ public class PageLibrary {
     private UserRegistrationNewPages urnp;
     private TestShippingOptionsPages tsop;
     private AccountManagementFunctionalityPages amfp;
+    private HomePage hPage;
+    private LoginFunctionalityPage loginFunctionalityPage;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -21,9 +23,11 @@ public class PageLibrary {
         scp = new ShoppingCartPages();
         sfp = new SearchFunctionalityPages();
         idv = new ItemDetailsVerificationPages();
-        urnp =new UserRegistrationNewPages();
-        tsop=new TestShippingOptionsPages();
-        amfp=new AccountManagementFunctionalityPages();
+        urnp = new UserRegistrationNewPages();
+        tsop = new TestShippingOptionsPages();
+        amfp = new AccountManagementFunctionalityPages();
+        hPage=new HomePage();
+        loginFunctionalityPage=new LoginFunctionalityPage();
     }
 
     public UserRegistrationPages getUrp() {
@@ -49,12 +53,22 @@ public class PageLibrary {
     public UserRegistrationNewPages getUrnp() {
         return urnp;
     }
-    public TestShippingOptionsPages getTsop(){
-        return tsop;}
-    public AccountManagementFunctionalityPages getAmfp(){
+
+    public TestShippingOptionsPages getTsop() {
+        return tsop;
+    }
+
+    public AccountManagementFunctionalityPages getAmfp() {
         return amfp;
     }
 
+    public HomePage getHPage() {
+        return hPage;
+    }
+
+    public LoginFunctionalityPage getLoginFunctionalityPage() {
+        return loginFunctionalityPage;
+    }
 }
 
 

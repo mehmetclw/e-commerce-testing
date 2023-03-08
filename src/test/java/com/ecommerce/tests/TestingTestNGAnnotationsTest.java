@@ -2,23 +2,23 @@ package com.ecommerce.tests;
 
 import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Utility;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TestingTestNGAnnotationsTest extends TestBase{
-    SoftAssert sf = new SoftAssert();
+public class TestingTestNGAnnotationsTest extends TestBase {
+
     public String url = ConfigReader.getProperty("url");
 
     @Test(description = "EC-40 | Login functionality testing")
     @Parameters({"browser", "userName"})
     public void parameterTest(@Optional String browser, @Optional String userName) {
-        System.out.println("userName = " + userName);
-        System.out.println("browser = " + browser);
+        if (browser != null && userName != null) {
+            System.out.println("userName = " + userName);
+            System.out.println("browser = " + browser);
+        }else
+            System.out.println("User Name and/or Browser is null");
         Utility.waits(4);
     }
 
@@ -33,7 +33,7 @@ public class TestingTestNGAnnotationsTest extends TestBase{
 
     @Test(dependsOnMethods = {"test6"})
     @Parameters({"email", "password"})
-    public void test2(@Optional String email,@Optional String password) {
+    public void test2(@Optional String email, @Optional String password) {
         System.out.println("This is test2");
         System.out.println("email = " + email);
         System.out.println("password = " + password);
@@ -46,7 +46,7 @@ public class TestingTestNGAnnotationsTest extends TestBase{
         Utility.waits(4);
     }
 
-    @Test(groups = "regression", dependsOnGroups = {})
+    @Test(groups = "regression", dependsOnGroups = {"test3"})
     public void test4() {
         System.out.println("This is test4");
         Utility.waits(4);

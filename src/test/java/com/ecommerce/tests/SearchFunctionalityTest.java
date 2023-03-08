@@ -22,7 +22,8 @@ import java.util.List;
 public class SearchFunctionalityTest extends TestBase{
     public String url = ConfigReader.getProperty("url");
 
-    @Test
+    @Test(groups = {"smoke", "regression"},
+    description = "Search",priority = 1)
     public void validSearching() {
         /**
          * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
@@ -37,7 +38,8 @@ public class SearchFunctionalityTest extends TestBase{
         getAppLibrary().getPage().getSfp().validSearching();
     }
 
-    @Test
+    @Test(groups = "regression",
+    description = "search results",priority = 2)
     public void sortTheResults() {
 
         /******** Sort the search results by price (lowest to highest)
@@ -49,7 +51,8 @@ public class SearchFunctionalityTest extends TestBase{
         getAppLibrary().getPage().getSfp().sortTheResults();
     }
 
-    @Test
+    @Test(groups = {"regression"},
+    description = "invalid Search",priority = 3)
     public void invalidSearching() {
         /***********************invalidSearching
          * * Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"

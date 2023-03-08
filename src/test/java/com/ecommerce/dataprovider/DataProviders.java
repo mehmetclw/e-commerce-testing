@@ -1,8 +1,22 @@
 package com.ecommerce.dataprovider;
 
+import com.ecommerce.utility.ReadExcelLib;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 
 public class DataProviders {
+    ReadExcelLib excel = new ReadExcelLib();
+
+    @DataProvider(name = "readDataFromExcel")
+    public Object[][] dataProviderExcelReading() {
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/data/TestData.xlsx";
+        return excel.get_Excel_Data(filePath, System.getProperty("excelSheet"), 3);
+    }
+    @DataProvider(name = "readDataFromExcelFiles")
+    public Object[][] dataProviderExcelReadingFoodSales() {
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/data/sampledatafoodsales.xlsx";
+        return excel.get_Excel_Data(filePath, System.getProperty("FoodSales"), 8);
+    }
 
     @DataProvider(name = "userCredentials")
     public Object[][] credentials() {
