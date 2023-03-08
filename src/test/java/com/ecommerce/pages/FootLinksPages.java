@@ -10,10 +10,6 @@ public class FootLinksPages extends Utility {
 
     FootLinksElements fle;
 
-
-    public String email = ConfigReader.getProperty("email");
-    public String password = "";
-
     public void checkCategoriesLink() {
         fle = new FootLinksElements();
         Utility.scrollTo(fle.womenLink);
