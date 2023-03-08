@@ -1,6 +1,7 @@
 package com.ecommerce.utility.library;
 
 import com.ecommerce.pages.*;
+import com.ecommerce.tests.FootlinksTest;
 import com.ecommerce.utility.Driver;
 import org.openqa.selenium.WebDriver;
 
@@ -16,6 +17,7 @@ public class PageLibrary {
     private AccountManagementFunctionalityPages amfp;
     private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
+    private FootLinksPages flp;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -28,6 +30,7 @@ public class PageLibrary {
         amfp = new AccountManagementFunctionalityPages();
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
+        flp= new FootLinksPages();
     }
 
     public UserRegistrationPages getUrp() {
@@ -69,6 +72,9 @@ public class PageLibrary {
     public LoginFunctionalityPage getLoginFunctionalityPage() {
         return loginFunctionalityPage;
     }
-}
+    public FootLinksPages getFlp(){return flp;}
+
+
+    }
 
 
