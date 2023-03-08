@@ -80,6 +80,7 @@ public class FootLinksPages extends Utility {
         Utility.waits(2);
     }
     public void myAccountLinks() {
+        fle = new FootLinksElements();
         Utility.scrollTo(fle.myOrders);
         fle.myOrders.click();
         String actualUrl = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=history";
