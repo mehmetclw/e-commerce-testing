@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 import java.util.List;
 
-public class ItemDetailsVerificationPages extends TestBase {
+public class ItemDetailsVerificationPages extends Utility {
 
     ItemDetailsVerificationElements idv;
     SoftAssert sf = new SoftAssert();
@@ -30,16 +30,16 @@ public class ItemDetailsVerificationPages extends TestBase {
     public void setup() {
 
         idv = new ItemDetailsVerificationElements();
-        idv.signInLink.click();
+        clickElement(idv.signInLink);
 
         //Filling the requirement fields with valid credentials
-        idv.email.sendKeys(userId);
-        idv.password.sendKeys(userPassword);
-        idv.signInButton.click();
+        sendKeyToElement(idv.email,userId);
+        sendKeyToElement(idv.password,userPassword);
+        clickElement(idv.signInButton);
         Utility.waits(1);
 
         //Going to "Women" link
-        idv.womenLink.click();
+        clickElement(idv.womenLink);
     }
 
     public void pageDetailsVerif() {
@@ -56,14 +56,14 @@ public class ItemDetailsVerificationPages extends TestBase {
 
         Utility.scrollToCenter( idv.pageProducts.get(0));
         Utility.hoverOver( idv.pageProducts.get(0), 1);
-        idv.pageProducts.get(0).click();
+        clickElement(idv.pageProducts.get(0));
 
         // Getting product details from the page
         Utility.scrollToCenter( idv.actualItemDescription);
         String actualItemPageTitle = Driver.getDriver().getTitle();
-        String actualItemName = idv.actualItemTitle.getText();
-        String actualItemExplanation = idv.actualItemDescription.getText();
-        String actualItemPrice = idv.actualItemSale.getText();
+        String actualItemName = getTextElement(idv.actualItemTitle);
+        String actualItemExplanation = getTextElement(idv.actualItemDescription);
+        String actualItemPrice = getTextElement(idv.actualItemSale);
 
         //Checking product details
         sf.assertEquals(actualItemPageTitle, expectedItemPageTitle, "PAGE TITLE DOES NOT MATCH");
@@ -73,7 +73,7 @@ public class ItemDetailsVerificationPages extends TestBase {
         Utility.waits(1);
 
         //Adding product to cart
-        idv.addToCart.click();
+        clickElement(idv.addToCart);
 
         //Checking to add message
         Utility.waits(1);
@@ -98,7 +98,7 @@ public class ItemDetailsVerificationPages extends TestBase {
         Utility.waits(1);
         Utility.hoverOver(idv.pageProducts.get(0), 1);
         Assert.assertTrue(Utility.isElementVisible(idv.quickview, 1));
-        idv.quickview.click();
+        clickElement(idv.quickview);
         Driver.getDriver().switchTo().frame(idv.iframeLocator);
 
         // Getting product details from the opening window
@@ -113,11 +113,11 @@ public class ItemDetailsVerificationPages extends TestBase {
         Utility.waits(1);
         
         //Adding product to cart
-        idv.addToCart.click();
+        clickElement(idv.addToCart);
         Utility.waits(1);
 
         //Checking to add message
-        String actualAddCheckText = idv.checkWindowAddMessage.getText();
+        String actualAddCheckText = getTextElement(idv.checkWindowAddMessage);
         sf.assertTrue(actualAddCheckText.contains(expectedAddCheckText), "PRODUCT DOES NOT ADDED.");
         sf.assertAll();
     }
