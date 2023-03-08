@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestShippingOptionsPages {
+public class TestShippingOptionsPages extends Utility{
     TestShippingOptionsElements tsoe;
 
     public String email = ConfigReader.getProperty("userEmailEC-4");
@@ -20,7 +20,7 @@ public class TestShippingOptionsPages {
         tsoe = new TestShippingOptionsElements();
     }
 
-    public void testAvailableShippingOptions () {
+    public void testAvailableShippingOptions  () {
         /**TEST CASE1:Verify that the website displays the available shipping options for the user's location.
          *  Go to the home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
          *  Click sign in
@@ -40,29 +40,28 @@ public class TestShippingOptionsPages {
          *
          *  */
         tsoe = new TestShippingOptionsElements();
-        tsoe.clickSignIn.click();
-        tsoe.emailAddress.sendKeys(email);
+        clickElement(tsoe.clickSignIn);
+        sendKeyToElement(tsoe.emailAddress,email);
         Utility.waits(2);
-        tsoe.passWord.sendKeys(passwordKey);
+        sendKeyToElement(tsoe.passWord,passwordKey);
         Utility.waits(2);
-        tsoe.signInButton.click();
+        clickElement(tsoe.signInButton);
         Utility.waits(2);
         tsoe.clickWomenLink.click();
         Utility.waits(2);
-        tsoe.clickTshirtLink.click();
+        clickElement(tsoe.clickTshirtLink);
         Utility.scrollTo(tsoe.clickTshirtLink);
-        //Adding first products
         Driver.getDriver().switchTo().frame(0);
-        tsoe.chooseNumberOfTshirt.click();
+        clickElement(tsoe.chooseNumberOfTshirt);
         tsoe.chooseNumberOfTshirt.clear();
-        tsoe.chooseNumberOfTshirt.sendKeys("2");
+        sendKeyToElement(tsoe.chooseNumberOfTshirt,"2");
         Utility.waits(2);
-        tsoe.clickChooseSize.click();
-        tsoe.chooseSize_S.click();
-        tsoe.chooseColor.click();
-        tsoe.addToCart.click();
-        tsoe.proceedToChckout.click();
-        tsoe.proceedToCheckout1.click();
+        clickElement(tsoe.clickChooseSize);
+        clickElement(tsoe.chooseSize_S);
+        clickElement(tsoe.chooseColor);
+        clickElement(tsoe.addToCart);
+        clickElement(tsoe.proceedToChckout);
+        clickElement(tsoe.proceedToCheckout1);
         Boolean checkFastTransOption = tsoe.fastTransOption.isDisplayed();
         Boolean checkMyCarrierOption = tsoe.myCarrierOption.isDisplayed();
         Assert.assertTrue(checkFastTransOption);
@@ -75,8 +74,8 @@ public class TestShippingOptionsPages {
          * check if the preferred shipping is selected
          * click proceed to checkout
          * */
-        tsoe.deliveryOption2.click();
-        tsoe.agreeTermsSelect.click();
+        clickElement(tsoe.deliveryOption2);
+        clickElement(tsoe.agreeTermsSelect);
         Assert.assertTrue(tsoe.deliveryOption2.isSelected());
         Assert.assertFalse(tsoe.deliveryOption1.isSelected());
         Utility.waits(5);
