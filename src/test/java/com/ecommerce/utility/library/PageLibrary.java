@@ -20,6 +20,7 @@ public class PageLibrary {
     private FootLinksPages flp;
     private NewsletterFunctionalityPage nfp;
     private SubmissionOfFormPage sofp;
+    private ShoppingCartProductQuantityPages scpqp;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -35,6 +36,8 @@ public class PageLibrary {
         flp= new FootLinksPages();
         nfp = new NewsletterFunctionalityPage();
         sofp = new SubmissionOfFormPage();
+        scpqp= new ShoppingCartProductQuantityPages();
+
     }
 
     public UserRegistrationPages getUrp() {
@@ -79,8 +82,8 @@ public class PageLibrary {
     public FootLinksPages getFlp(){return flp;}
     public NewsletterFunctionalityPage getNfp(){return nfp;}
     public SubmissionOfFormPage getSofp(){return sofp;}
-
-
+    public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
     }
+
 
 
