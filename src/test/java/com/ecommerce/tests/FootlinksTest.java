@@ -25,8 +25,8 @@ public class FootlinksTest extends TestBase {
     public void checkCategoriesLink() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getFlp().checkCategoriesLink();
-    }
 
+    }
     @Test(groups = {"smoke", "regression"},
             description = "EC-83 UI | Test Footer Links under Information")
     public void checkInformationLinks() {
@@ -39,5 +39,6 @@ public class FootlinksTest extends TestBase {
     public void myAccountLinks() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getFlp().myAccountLinks();
+
     }
 }

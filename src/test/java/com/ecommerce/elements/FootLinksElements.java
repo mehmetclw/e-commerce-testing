@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class FootLinksElements {
     public FootLinksElements() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -54,6 +56,7 @@ public class FootLinksElements {
     @FindBy(xpath = "//a[@title='Manage my personal information']")
     public WebElement myPersonalInfo;
 
-
+    @FindBy (css = "#block_various_links_footer>ul>li>a")
+    public List<WebElement> infoLinks;
 
 }
