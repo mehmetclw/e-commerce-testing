@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class PageLibrary {
     private UserRegistrationPages urp;
 
-    public TestTheNavigationPages tnp;
+    private TestTheNavigationPages tnp;
     private ShoppingCartPages scp;
     private SearchFunctionalityPages sfp;
     private ItemDetailsVerificationPages idv;
@@ -18,7 +18,7 @@ public class PageLibrary {
     private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
     private FootLinksPages flp;
-
+    private NewsletterFunctionalityPage nfp;
     private SubmissionOfFormPage sofp;
     private ShoppingCartProductQuantityPages scpqp;
 
@@ -34,8 +34,10 @@ public class PageLibrary {
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FootLinksPages();
-        sofp=new SubmissionOfFormPage();
+        nfp = new NewsletterFunctionalityPage();
+        sofp = new SubmissionOfFormPage();
         scpqp= new ShoppingCartProductQuantityPages();
+
     }
 
     public UserRegistrationPages getUrp() {
@@ -78,7 +80,7 @@ public class PageLibrary {
         return loginFunctionalityPage;
     }
     public FootLinksPages getFlp(){return flp;}
-
+    public NewsletterFunctionalityPage getNfp(){return nfp;}
     public SubmissionOfFormPage getSofp(){return sofp;}
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
     }
