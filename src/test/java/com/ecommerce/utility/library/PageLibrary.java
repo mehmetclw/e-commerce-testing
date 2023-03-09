@@ -33,6 +33,8 @@ public class PageLibrary {
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FootLinksPages();
+        nfp = new NewsletterFunctionalityPage();
+        sofp = new SubmissionOfFormPage();
     }
 
     public UserRegistrationPages getUrp() {
@@ -75,6 +77,8 @@ public class PageLibrary {
         return loginFunctionalityPage;
     }
     public FootLinksPages getFlp(){return flp;}
+    public NewsletterFunctionalityPage getNfp(){return nfp;}
+    public SubmissionOfFormPage getSofp(){return sofp;}
 
 
     }
