@@ -19,6 +19,8 @@ public class PageLibrary {
     private LoginFunctionalityPage loginFunctionalityPage;
     private FootLinksPages flp;
 
+    private SubmissionOfFormPage sofp;
+
     public PageLibrary() {
         urp = new UserRegistrationPages();
         tnp = new TestTheNavigationPages();
@@ -31,6 +33,7 @@ public class PageLibrary {
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FootLinksPages();
+        sofp=new SubmissionOfFormPage();
     }
 
     public UserRegistrationPages getUrp() {
@@ -74,7 +77,8 @@ public class PageLibrary {
     }
     public FootLinksPages getFlp(){return flp;}
 
-
+    public SubmissionOfFormPage getSofp(){return sofp;}
     }
+
 
 
