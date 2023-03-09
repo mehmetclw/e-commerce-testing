@@ -9,61 +9,62 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class TestTheNavigationPages extends Utility {
-
+    SoftAssert sf = new SoftAssert();
     TestTheNavigationElements tne;
 
     public void checkingWomenBar() {
         tne = new TestTheNavigationElements();
-        tne.womenTab.click();
-        Assert.assertTrue(tne.womenPageHeader.isDisplayed());
+        clickElement(tne.womenTab);
+        sf.assertTrue(tne.womenPageHeader.isDisplayed());
         waits(1);
         hoverOver( tne.womenTab2, 2);
         waits(1);
-        tne.tShirtLink.click();
+        clickElement(tne.tShirtLink);
         waits(2);
-        Assert.assertTrue(tne.tShirtPageHeader.isDisplayed());
+        sf.assertTrue(tne.tShirtPageHeader.isDisplayed());
         hoverOver( tne.womenTab3, 2);
-        tne.blouseLink.click();
+        clickElement(tne.blouseLink);
         waits(1);
-        Assert.assertTrue(tne.blouseLinkPageHeader.isDisplayed());
+        sf.assertTrue(tne.blouseLinkPageHeader.isDisplayed());
         hoverOver(tne.womenTab4, 1);
-        tne.casualDress.click();
-        Assert.assertTrue(tne.casualDressPageHeader.isDisplayed());
+        clickElement(tne.casualDress);
+        sf.assertTrue(tne.casualDressPageHeader.isDisplayed());
         hoverOver( tne.womenTab5, 1);
-        tne.eveningDress.click();
-        Assert.assertTrue(tne.eveningDressPageHeader.isDisplayed());
+        clickElement(tne.eveningDress);
+        sf.assertTrue(tne.eveningDressPageHeader.isDisplayed());
         hoverOver( tne.womenTab6, 1);
         tne.summerDress.click();
-        Assert.assertTrue(tne.summerDressPageHeader.isDisplayed());
+        sf.assertTrue(tne.summerDressPageHeader.isDisplayed());
     }
 
     public void checkingDressBar() {
         tne = new TestTheNavigationElements();
-        tne.dressesBar.click();
+        clickElement(tne.dressesBar);
         waits(1);
-        Assert.assertTrue(tne.dressesBarPageHeader.isDisplayed());
+        sf.assertTrue(tne.dressesBarPageHeader.isDisplayed());
         waits(1);
         hoverOver(tne.dressesBar1, 2);
-        tne.casualDressLink.click();
+        clickElement(tne.casualDressLink);
         waits(2);
-        Assert.assertTrue(tne.casualDressLinkPageHeader.isDisplayed());
+        sf.assertTrue(tne.casualDressLinkPageHeader.isDisplayed());
         waits(1);
         hoverOver( tne.dressesBar2, 2);
-        tne.eveningDressLink.click();
+        clickElement(tne.eveningDressLink);
         waits(2);
-        Assert.assertTrue(tne.eveningDressLinkPageHeadr.isDisplayed());
+        sf.assertTrue(tne.eveningDressLinkPageHeadr.isDisplayed());
         waits(1);
         Utility.hoverOver(tne.dressesBar3, 2);
-        tne.summerDressLink.click();
+        clickElement(tne.summerDressLink);
         waits(2);
-        Assert.assertTrue(tne.summerDressLinkPageHeader.isDisplayed());
+        sf.assertTrue(tne.summerDressLinkPageHeader.isDisplayed());
     }
     public void checkingTShirtsBar() {
         tne = new TestTheNavigationElements();
-        tne.tshirtsBar.click();
-        Assert.assertTrue(tne.tshirtsBarPageHeader.isDisplayed());
+        clickElement(tne.tshirtsBar);
+        sf.assertTrue(tne.tshirtsBarPageHeader.isDisplayed());
         waits(2);
     }
 
