@@ -16,7 +16,6 @@ public class AccountManagementFunctionalityPages extends Utility {
     public String email = ConfigReader.getProperty("emailAddress1");
     public String password = ConfigReader.getProperty("password");
     public String userId=ConfigReader.getProperty("userId");
-    public  String address= ConfigReader.getProperty("newAddress");
 
     public void accountUpdate() {
         String expectedTitle = "My Store";
@@ -62,7 +61,7 @@ public class AccountManagementFunctionalityPages extends Utility {
         clickElement(amfe.updateButton);
         clickElement(amfe.enterNewAddress);
         clearElement(amfe.enterNewAddress);
-        sendKeyToElement(amfe.enterNewAddress, ConfigReader.getProperty("newAddress"));
+        sendKeyToElement(amfe.enterNewAddress, "12 Street");
         clickElement(amfe.saveButton);
         scrollTo(amfe.verifyChangedAddress);
         String actualTextLine = getTextElement(amfe.verifyChangedAddress);

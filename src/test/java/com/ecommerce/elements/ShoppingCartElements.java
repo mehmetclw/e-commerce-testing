@@ -32,6 +32,7 @@ import java.util.List;
         @FindBy(xpath = "//img[@src='https://ecommerce.yosemiteint.com/prestashop/img/p/1/1-home_default.jpg']")
         public WebElement clickTshirtLink;
 
+
         @FindBy (xpath = "//input[@id='quantity_wanted']")
         public WebElement chooseNumberOfTshirt;
 
