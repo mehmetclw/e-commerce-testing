@@ -99,7 +99,7 @@ public class FootLinksPages extends Utility {
         sf.assertEquals(expectedUrl2, actualUrl2, "NOT MATCHED");
         waits(1);
 
-        Utility.scrollTo(fle.myPersonalInfo);
+        scrollTo(fle.myPersonalInfo);
         clickElement(fle.myPersonalInfo);
         String actualUrl3 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=identity";
         String expectedUrl3 = Driver.getDriver().getCurrentUrl();

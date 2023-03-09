@@ -56,7 +56,7 @@ public class TestTheNavigationPages extends Utility {
         waits(2);
         sf.assertTrue(tne.eveningDressLinkPageHeadr.isDisplayed());
         waits(1);
-        Utility.hoverOver(tne.dressesBar3, 2);
+        hoverOver(tne.dressesBar3, 2);
         clickElement(tne.summerDressLink);
         waits(2);
         sf.assertTrue(tne.summerDressLinkPageHeader.isDisplayed());
