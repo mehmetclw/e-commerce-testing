@@ -19,6 +19,7 @@ public class PageLibrary {
     private LoginFunctionalityPage loginFunctionalityPage;
     private FootLinksPages flp;
     private NewsletterFunctionalityPage nfp;
+    private SubmissionOfFormPage sofp;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -32,7 +33,6 @@ public class PageLibrary {
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FootLinksPages();
-        nfp= new NewsletterFunctionalityPage();
     }
 
     public UserRegistrationPages getUrp() {
@@ -76,9 +76,7 @@ public class PageLibrary {
     }
     public FootLinksPages getFlp(){return flp;}
 
-    public NewsletterFunctionalityPage getNfp() {
-        return nfp;
+
     }
-}
 
 

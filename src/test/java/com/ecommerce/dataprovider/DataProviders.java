@@ -12,7 +12,7 @@ public class DataProviders {
         String filePath = System.getProperty("user.dir") + "/src/test/resources/data/TestData.xlsx";
         return excel.get_Excel_Data(filePath, System.getProperty("excelSheet"), 3);
     }
-    @DataProvider(name = "readDataFromExcelFiles")
+    @DataProvider(parallel = true, name = "readDataFromExcelFiles")
     public Object[][] dataProviderExcelReadingFoodSales() {
         String filePath = System.getProperty("user.dir") + "/src/test/resources/data/sampledatafoodsales.xlsx";
         return excel.get_Excel_Data(filePath, System.getProperty("FoodSales"), 8);

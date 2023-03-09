@@ -32,10 +32,12 @@ public class Driver {
      * So in the entire project we used single driver.
      * This is called Singleton Design pattern.
      * Another way to achive this is creating the class as Abstract.
-     *
+     * <p>
      * Driver.getDriver() ==> driver
      */
-    private Driver() {}
+    private Driver() {
+    }
+
     public static WebDriver getDriver() {
 
         //if this thread doesn't have a web Driver yet - create it and add to pool
@@ -51,6 +53,7 @@ public class Driver {
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
+                    //WebDriver driver =new ChromeDriver();
                     DesiredCapabilities caps = new DesiredCapabilities();
 
                     /**
@@ -68,12 +71,15 @@ public class Driver {
                     profile.put("managed_default_content_settings", contentSettings);
                     prefs.put("profile", profile);
                     options.setExperimentalOption("prefs", prefs);
+                    options.addArguments("--remote-allow-origins=*");
                     caps.setCapability(ChromeOptions.CAPABILITY, options);
 
                     driverPool.set(new ChromeDriver(options));
                     break;
                 case "chrome_headless":
                     WebDriverManager.chromedriver().setup();
+                    ChromeOptions options1 = new ChromeOptions();
+                    options1.addArguments("--remote-allow-origins=*");
                     driverPool.set(new ChromeDriver(new ChromeOptions().setHeadless(true)));
                     break;
                 case "firefox":
@@ -119,7 +125,7 @@ public class Driver {
                     break;
                 case "remote_firefox":
                     try {
-                         firefoxOptions = new FirefoxOptions();
+                        firefoxOptions = new FirefoxOptions();
                         firefoxOptions.setCapability("platform", Platform.ANY);
                         driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444//wd/hub"), firefoxOptions));
                     } catch (Exception e) {
@@ -131,6 +137,7 @@ public class Driver {
         //return corresponded to thread id webDriver object
         return driverPool.get();
     }
+
     public static FirefoxProfile firefoxProfile() {
 
         //Added for download template settings to change the file location
@@ -148,9 +155,10 @@ public class Driver {
         }
         return firefoxProfile;
     }
+
     public static void close() {
         if (driverPool.get() != null) {
-            driverPool.get().close();
+            //driverPool.get().close();
             driverPool.get().quit();
             driverPool.remove();
         }

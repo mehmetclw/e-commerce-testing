@@ -64,9 +64,6 @@ public class AccountManagementFunctionalityTest extends TestBase {
      */
 
     public String url = ConfigReader.getProperty("url");
-    public String email = ConfigReader.getProperty("emailAddress1");
-    public String password = ConfigReader.getProperty("password");
-
     @Test(groups = {"smoke", "regression"},
             description = "EC-10 Test the account management functionality")
     public void accountUpdate() {

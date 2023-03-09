@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AccountManagementFunctionalityElements {
-
-
     public AccountManagementFunctionalityElements(){
         PageFactory.initElements(Driver.getDriver(),this);
     }

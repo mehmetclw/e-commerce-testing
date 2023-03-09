@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.xml.xpath.XPath;
 import java.util.List;
 
 public class SearchFunctionalityElements {
@@ -23,5 +24,8 @@ public class SearchFunctionalityElements {
     public WebElement sortOption;
     @FindBy(xpath = "//ul[@class='product_list grid row']")
     public List<WebElement> searchResults;
+    @FindBy(xpath = "//ul[@id=product_list]")
+    public  List<WebElement> productPrices;
+
 
 }

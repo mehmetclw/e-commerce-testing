@@ -13,8 +13,6 @@ import org.testng.asserts.SoftAssert;
 
 
 public class LoginFunctionalityTest extends TestBase {
-
-
     public String url = ConfigReader.getProperty("url");
 
     @Test(groups = {"smoke", "regression"},

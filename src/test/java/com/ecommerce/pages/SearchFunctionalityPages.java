@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SearchFunctionalityPages {
+public class SearchFunctionalityPages extends Utility {
     SearchFunctionalityElements sfe;
 
     public String email = ConfigReader.getProperty("email");
@@ -40,9 +40,9 @@ public class SearchFunctionalityPages {
         Assert.assertEquals(pageTitle, expectedPageTitle, "Page title not match");
         System.out.println("The user in the home page");
         //Go to search button and Enter "Dress" and click search
-        sfe.searchBox.click();
+        clickElement(sfe.searchBox);
         sfe.searchBox.sendKeys("Dress");
-        sfe.searchButton.click();
+        clickElement(sfe.searchButton);
         //verify the search page id displayed
         String expectedSearchPageTitle = "Search - My Store";
         String searchPageTitle = Driver.getDriver().getTitle();
@@ -51,8 +51,7 @@ public class SearchFunctionalityPages {
         Utility.waits(3);
         scrollUp();
         // Verify that relevant search results are displayed
-        List<WebElement> searchResults = Driver.getDriver().findElements(By.xpath("//ul[@class='product_list grid row']"));
-        for (WebElement searchResult : searchResults) {
+        for (WebElement searchResult : sfe.searchResults) {
             String productTitle = searchResult.findElement(By.cssSelector("h5>a")).getText();
             if (!productTitle.contains("Dress")) {
                 System.out.println("Error: Invalid search result - " + productTitle);
@@ -69,17 +68,15 @@ public class SearchFunctionalityPages {
          */
 
         sfe = new SearchFunctionalityElements();
-        sfe.searchBox.click();
-        sfe.searchBox.sendKeys("Dress");
-        sfe.searchButton.click();
-        sfe.sortOption.click();
-        Select select= new Select(sfe.sortOption);
-        select.selectByValue("price:asc");
+        clickElement(sfe.searchBox);
+        sendKeyToElement(sfe.searchBox,"Dress");
+        clickElement(sfe.searchButton);
+        clickElement(sfe.sortOption);
+        selectElementByValue(sfe.sortOption, "price:asc");
         // Verify that search results are sorted by price correctly
-        List<WebElement> productPrices = Driver.getDriver().findElements(By.xpath("//ul[@id=product_list]"));
         List<Float> prices = new ArrayList<Float>();
 
-        for (WebElement productPrice : productPrices) {
+        for (WebElement productPrice : sfe.productPrices) {
             String priceText = productPrice.getText().replace("$", "");
             prices.add(Float.valueOf(priceText));}
             List<Float> sortedPrices = new ArrayList<Float>(prices);
@@ -102,9 +99,9 @@ public class SearchFunctionalityPages {
           */
         sfe = new SearchFunctionalityElements();
         //Go to search button and Enter "xyz" and click search
-        sfe.searchBox.click();
-        sfe.searchBox.sendKeys("xyz");
-        sfe.searchButton.click();
+        clickElement(sfe.searchBox);
+        sendKeyToElement(sfe.searchBox,"xyz");
+        clickElement(sfe.searchButton);
         String errorMessageDisplayed="No results were found for your search \"xyz\"";
         Assert.assertEquals(sfe.errorMessage.getText(),errorMessageDisplayed,"Error message not displayed");
 

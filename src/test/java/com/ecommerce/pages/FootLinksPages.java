@@ -5,110 +5,111 @@ import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class FootLinksPages extends Utility {
-
+    SoftAssert sf = new SoftAssert();
     FootLinksElements fle;
 
-
-    public String email = ConfigReader.getProperty("email");
-    public String password = "";
+    public FootLinksPages(){
+        fle = new FootLinksElements();
+    }
 
     public void checkCategoriesLink() {
-        fle = new FootLinksElements();
-        Utility.scrollTo(fle.womenLink);
-        Utility.waits(2);
-        fle.womenLink.click();
-        Utility.waits(2);
-        Assert.assertTrue(fle.womenLinkPageHeader.isDisplayed());
+        scrollTo(fle.womenLink);
+        waits(2);
+        clickElement(fle.womenLink);
+        waits(2);
+        sf.assertTrue(fle.womenLinkPageHeader.isDisplayed());
     }
 
     public void checkInformationLinks() {
-        fle = new FootLinksElements();
-        Utility.scrollToCenter(fle.specialLink);
-        Utility.waits(2);
-        fle.specialLink.click();
-        Utility.waits(2);
-        Assert.assertTrue(fle.specialLinkPageHeader.isDisplayed());
+        scrollToCenter(fle.specialLink);
+        waits(2);
+        clickElement(fle.specialLink);
+        waits(2);
+        sf.assertTrue(fle.specialLinkPageHeader.isDisplayed());
 
-        Utility.scrollTo(fle.newProductsLink);
-        Utility.waits(1);
-        fle.newProductsLink.click();
-        Utility.waits(2);
+        scrollTo(fle.newProductsLink);
+        waits(1);
+        clickElement(fle.newProductsLink);
+        waits(2);
         String actualUrl = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=new-products";
         String expectedUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl, actualUrl, "NOT MATCHED");
+        sf.assertEquals(expectedUrl, actualUrl, "NOT MATCHED");
 
-        Utility.scrollTo(fle.bestSellersLink);
-        Utility.waits(1);
+        scrollTo(fle.bestSellersLink);
+        waits(1);
         fle.bestSellersLink.click();
-        Utility.waits(2);
+        waits(2);
         String actualUrl1 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=best-sales";
         String expectedUrl1 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl1, actualUrl1, "NOT MATCHED");
+        sf.assertEquals(expectedUrl1, actualUrl1, "NOT MATCHED");
 
-        Utility.scrollTo(fle.ourStores);
-        fle.ourStores.click();
+        scrollTo(fle.ourStores);
+        clickElement(fle.ourStores);
         String actualUrl2 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=stores";
         String expectedUrl2 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl2, actualUrl2, "NOT MATCHED");
+        sf.assertEquals(expectedUrl2, actualUrl2, "NOT MATCHED");
 
-        Utility.scrollTo(fle.contactUs);
-        fle.contactUs.click();
+        scrollTo(fle.contactUs);
+        clickElement(fle.contactUs);
         String actualUrl3 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=contact";
         String expectedUrl3 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl3, actualUrl3, "NOT MATCHED");
+        sf.assertEquals(expectedUrl3, actualUrl3, "NOT MATCHED");
 
-        Utility.scrollTo(fle.termsAndConditions);
-        fle.termsAndConditions.click();
+        scrollTo(fle.termsAndConditions);
+        clickElement(fle.termsAndConditions);
         String actualUrl4 = "https://ecommerce.yosemiteint.com/prestashop/index.php?id_cms=3&controller=cms";
         String expectedUrl4 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl4, actualUrl4, "NOT MATCHED");
+        sf.assertEquals(expectedUrl4, actualUrl4, "NOT MATCHED");
 
-        Utility.scrollTo(fle.aboutUs);
-        fle.aboutUs.click();
+        scrollTo(fle.aboutUs);
+        clickElement(fle.aboutUs);
         String actualUrl5 = "https://ecommerce.yosemiteint.com/prestashop/index.php?id_cms=4&controller=cms";
         String expectedUrl5 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl5, actualUrl5, "NOT MATCHED");
-        Utility.waits(2);
+        sf.assertEquals(expectedUrl5, actualUrl5, "NOT MATCHED");
+        waits(2);
 
-        Utility.scrollTo(fle.sitemap);
-        fle.sitemap.click();
+        scrollTo(fle.sitemap);
+        clickElement(fle.sitemap);
         String actualUrl6 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=sitemap";
         String expectedUrl6 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl6, actualUrl6, "NOT MATCHED");
-        Utility.waits(2);
+        sf.assertEquals(expectedUrl6, actualUrl6, "NOT MATCHED");
+        waits(2);
     }
     public void myAccountLinks() {
         fle = new FootLinksElements();
-        Utility.scrollTo(fle.myOrders);
-        fle.myOrders.click();
+        scrollTo(fle.myOrders);
+        clickElement(fle.myOrders);
         String actualUrl = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=history";
         String expectedUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl, actualUrl, "NOT MATCHED");
-        Utility.waits(1);
+        sf.assertEquals(expectedUrl, actualUrl, "NOT MATCHED");
+        waits(1);
 
-        Utility.scrollTo(fle.myCreditSlips);
-        fle.myCreditSlips.click();
+        scrollTo(fle.myCreditSlips);
+        clickElement(fle.myCreditSlips);
         String actualUrl1 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=order-slip";
         String expectedUrl1 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl1, actualUrl1, "NOT MATCHED");
-        Utility.waits(1);
+        sf.assertEquals(expectedUrl1, actualUrl1, "NOT MATCHED");
+        waits(1);
 
-        Utility.scrollTo(fle.myAddresses);
-        fle.myAddresses.click();
+        scrollTo(fle.myAddresses);
+        clickElement(fle.myAddresses);
         String actualUrl2 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=addresses";
         String expectedUrl2 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl2, actualUrl2, "NOT MATCHED");
-        Utility.waits(1);
+        sf.assertEquals(expectedUrl2, actualUrl2, "NOT MATCHED");
+        waits(1);
 
-        Utility.scrollTo(fle.myPersonalInfo);
-        fle.myPersonalInfo.click();
+        scrollTo(fle.myPersonalInfo);
+        clickElement(fle.myPersonalInfo);
         String actualUrl3 = "https://ecommerce.yosemiteint.com/prestashop/index.php?controller=authentication&back=identity";
         String expectedUrl3 = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl3, actualUrl3, "NOT MATCHED");
-        Utility.waits(1);
+        sf.assertEquals(expectedUrl3, actualUrl3, "NOT MATCHED");
+        waits(1);
     }
+
 }
 
 

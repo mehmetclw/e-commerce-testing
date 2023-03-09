@@ -34,7 +34,7 @@ public class HomePageTest extends TestBase {
         Assert.assertEquals(actualTitle, expectedTitle, "Title didn't match");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void checkHomePageProducts() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getHPage().checkHomePageProductsPage();
