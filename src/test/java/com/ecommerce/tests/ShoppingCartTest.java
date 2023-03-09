@@ -1,21 +1,7 @@
 package com.ecommerce.tests;
 
-import com.ecommerce.pages.ShoppingCartPages;
 import com.ecommerce.utility.ConfigReader;
-import com.ecommerce.utility.Driver;
-import com.ecommerce.utility.Utility;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.util.List;
-
-import static org.testng.AssertJUnit.assertTrue;
 
 public class ShoppingCartTest extends TestBase {
 
@@ -61,7 +47,7 @@ public class ShoppingCartTest extends TestBase {
     public String url = ConfigReader.getProperty("url");
     public String email = ConfigReader.getProperty("emailAddress");
 
-    @Test(groups = "smoke",
+    @Test(groups = {"smoke","resgression"},
     description = "Add Remove products from shopping cart")
     public void addAndRemoveToCart() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);

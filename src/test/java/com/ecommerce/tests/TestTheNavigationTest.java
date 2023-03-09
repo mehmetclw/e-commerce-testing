@@ -1,7 +1,6 @@
 package com.ecommerce.tests;
 
 import com.ecommerce.utility.ConfigReader;
-import com.ecommerce.utility.Driver;
 import org.testng.annotations.Test;
 
 public class TestTheNavigationTest extends TestBase {
@@ -48,7 +47,7 @@ b. Verify that the user is redirected to the correct page when clicking on a lin
      **/
     public String url = ConfigReader.getProperty("url");
 
-    @Test(groups = "smoke",
+    @Test(groups = "regression",
     description = "Click the Women link section")
     public void checkingWomenBar() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);

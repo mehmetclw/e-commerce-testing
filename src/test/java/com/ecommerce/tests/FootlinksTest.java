@@ -1,9 +1,19 @@
 package com.ecommerce.tests;
 
 import com.ecommerce.utility.ConfigReader;
-import org.openqa.selenium.WebDriver;
+import com.ecommerce.utility.Driver;
+import com.ecommerce.utility.Utility;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import static com.ecommerce.utility.Utility.waits;
 
 public class FootlinksTest extends TestBase {
 
@@ -13,10 +23,8 @@ public class FootlinksTest extends TestBase {
     @Test(groups = {"smoke", "regression"},
             description = "EC-54 UI | Test the Footer Links under Categories")
     public void checkCategoriesLink() {
-
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getFlp().checkCategoriesLink();
-
     }
 
     @Test(groups = {"smoke", "regression"},
@@ -24,7 +32,6 @@ public class FootlinksTest extends TestBase {
     public void checkInformationLinks() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getFlp().checkInformationLinks();
-
     }
 
     @Test(groups = {"smoke", "regression"},

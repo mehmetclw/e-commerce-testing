@@ -5,14 +5,18 @@ import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class FootLinksPages extends Utility {
     SoftAssert sf = new SoftAssert();
     FootLinksElements fle;
 
-    public void checkCategoriesLink() {
+    public FootLinksPages(){
         fle = new FootLinksElements();
+    }
+
+    public void checkCategoriesLink() {
         scrollTo(fle.womenLink);
         waits(2);
         clickElement(fle.womenLink);
@@ -21,7 +25,6 @@ public class FootLinksPages extends Utility {
     }
 
     public void checkInformationLinks() {
-        fle = new FootLinksElements();
         scrollToCenter(fle.specialLink);
         waits(2);
         clickElement(fle.specialLink);
@@ -106,6 +109,7 @@ public class FootLinksPages extends Utility {
         sf.assertEquals(expectedUrl3, actualUrl3, "NOT MATCHED");
         waits(1);
     }
+
 }
 
 

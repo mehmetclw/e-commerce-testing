@@ -5,13 +5,12 @@ import com.ecommerce.utility.Utility;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class TestingTestNGAnnotationsTest extends TestBase {
 
     public String url = ConfigReader.getProperty("url");
 
-    @Test(description = "EC-40 | Login functionality testing")
+    @Test(groups = {"regression"},description = "EC-40 | Login functionality testing")
     @Parameters({"browser", "userName"})
     public void parameterTest(@Optional String browser, @Optional String userName) {
         if (browser != null && userName != null) {
@@ -22,8 +21,7 @@ public class TestingTestNGAnnotationsTest extends TestBase {
         Utility.waits(4);
     }
 
-    @Test(dependsOnMethods = {"test5"},
-            groups = {"smoke", "regression"},
+    @Test(groups = {"smoke", "regression"},
             description = "EC-37 / Search functionality testing to verify search works properly"
     )
     public void test1() {
@@ -31,7 +29,7 @@ public class TestingTestNGAnnotationsTest extends TestBase {
         Utility.waits(4);
     }
 
-    @Test(dependsOnMethods = {"test6"})
+    @Test( groups = {"smoke", "regression"})
     @Parameters({"email", "password"})
     public void test2(@Optional String email, @Optional String password) {
         System.out.println("This is test2");
@@ -46,19 +44,19 @@ public class TestingTestNGAnnotationsTest extends TestBase {
         Utility.waits(4);
     }
 
-    @Test(groups = "regression", dependsOnGroups = {"test3"})
+    @Test(groups = "regression")
     public void test4() {
         System.out.println("This is test4");
         Utility.waits(4);
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void test5() {
         System.out.println("This is test5");
         Utility.waits(4);
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void test6() {
         System.out.println("This is test6");
         Utility.waits(4);

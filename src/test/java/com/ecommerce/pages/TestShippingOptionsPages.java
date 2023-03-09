@@ -56,7 +56,7 @@ public class TestShippingOptionsPages extends Utility{
         tsoe.chooseNumberOfTshirt.clear();
         sendKeyToElement(tsoe.chooseNumberOfTshirt,"2");
         Utility.waits(2);
-        clickElement(tsoe.clickChooseSize);
+        selectElementByIndex(tsoe.clickChooseSize,0);
         clickElement(tsoe.chooseSize_S);
         clickElement(tsoe.chooseColor);
         clickElement(tsoe.addToCart);

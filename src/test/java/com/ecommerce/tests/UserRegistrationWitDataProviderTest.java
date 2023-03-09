@@ -26,7 +26,7 @@ public class UserRegistrationWitDataProviderTest extends TestBase {
      * click register
      */
 
-    @Test(dataProvider = "userCredentials")
+    @Test(groups = {"smoke", "regression"},dataProvider = "userCredentials")
     public void createNewAccount(String userEmail, String userPassword, String firstName, String lastName) {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getUrp().createNewAccount(userEmail, userPassword, firstName, lastName);
@@ -43,7 +43,8 @@ public class UserRegistrationWitDataProviderTest extends TestBase {
     }
 
     //when you are calling the dataProvider from different class, we need to use dataProviderClass keyword
-    @Test(dataProvider = "registration", dataProviderClass = DataProviders.class,
+    @Test(groups = {"smoke", "regression"},
+            dataProvider = "registration", dataProviderClass = DataProviders.class,
             description = "Using couple of parameters")
     public void createNewAccount1(String userEmail, String userPassword, String firstName, String lastName) {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);

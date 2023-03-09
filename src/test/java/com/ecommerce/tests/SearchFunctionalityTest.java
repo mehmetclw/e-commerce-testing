@@ -1,23 +1,7 @@
 package com.ecommerce.tests;
 
-import com.ecommerce.pages.SearchFunctionalityPages;
-import com.ecommerce.pages.UserRegistrationPages;
 import com.ecommerce.utility.ConfigReader;
-import com.ecommerce.utility.Database;
-import com.ecommerce.utility.Utility;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.util.List;
 
 public class SearchFunctionalityTest extends TestBase{
     public String url = ConfigReader.getProperty("url");

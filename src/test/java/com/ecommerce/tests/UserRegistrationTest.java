@@ -35,7 +35,7 @@ public class UserRegistrationTest extends TestBase {
             getAppLibrary().getPage().getUrp().createNewAccount();
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void fakerTest() {
         Faker fake = new Faker();
         String name = fake.name().fullName();
@@ -53,14 +53,14 @@ public class UserRegistrationTest extends TestBase {
         System.setProperty("FoodSales", "FoodSales");
     }
 
-    @Test(dataProvider = "readDataFromExcel", dataProviderClass = DataProviders.class)
+    @Test(groups = {"smoke", "regression"},dataProvider = "readDataFromExcel", dataProviderClass = DataProviders.class)
     public void test5(Object name, Object email, Object password) {
         System.out.println(name + " " + email + " " + password);
         System.out.println("===========");
 
     }
 
-    @Test(dataProvider = "readDataFromExcelFiles", dataProviderClass = DataProviders.class)
+    @Test(groups = {"smoke", "regression"},dataProvider = "readDataFromExcelFiles", dataProviderClass = DataProviders.class)
     public void test6(Object... values) {
        /* String date = (String) values[0];
         String region= (String) values[1];

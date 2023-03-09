@@ -40,14 +40,14 @@ public class ItemDetailsVerificationTest extends TestBase{
     String url = ConfigReader.getProperty("url");
     SoftAssert sf = new SoftAssert();
 
-    @Test
+    @Test(groups = {"regression"})
     public void pageDetailsVerif() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getIdv().setup();
         getAppLibrary().getPage().getIdv().pageDetailsVerif();
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void windowDetailsVerif() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
         getAppLibrary().getPage().getIdv().setup();
