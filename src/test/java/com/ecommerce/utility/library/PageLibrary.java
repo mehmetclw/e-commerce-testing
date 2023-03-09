@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class PageLibrary {
     private UserRegistrationPages urp;
 
-    public TestTheNavigationPages tnp;
+    private TestTheNavigationPages tnp;
     private ShoppingCartPages scp;
     private SearchFunctionalityPages sfp;
     private ItemDetailsVerificationPages idv;
@@ -18,6 +18,7 @@ public class PageLibrary {
     private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
     private FootLinksPages flp;
+    private NewsletterFunctionalityPage nfp;
 
     public PageLibrary() {
         urp = new UserRegistrationPages();
@@ -31,6 +32,7 @@ public class PageLibrary {
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FootLinksPages();
+        nfp= new NewsletterFunctionalityPage();
     }
 
     public UserRegistrationPages getUrp() {
@@ -74,7 +76,9 @@ public class PageLibrary {
     }
     public FootLinksPages getFlp(){return flp;}
 
-
+    public NewsletterFunctionalityPage getNfp() {
+        return nfp;
     }
+}
 
 
