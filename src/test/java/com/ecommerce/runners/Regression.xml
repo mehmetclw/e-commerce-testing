@@ -3,12 +3,11 @@
     <listeners>
         <listener class-name="com.ecommerce.utility.TestListeners"/>
     </listeners>
-    <parameter name="userName" value="Test User"></parameter>
-    <parameter name="browser" value="chrome"></parameter>
-    <parameter name="email" value="abc@gmail.com"></parameter>
-    <parameter name="password" value="abc1234"></parameter>
-    <test name="Regression Test"  >
-
+    <parameter name="userName" value="Test User"/>
+    <parameter name="browser" value="chrome"/>
+    <parameter name="email" value="abc@gmail.com"/>
+    <parameter name="password" value="abc1234"/>
+    <test name="Regression Test dsadsadsadas"  >
         <groups>
             <run>
                 <include name="regression" />
@@ -16,14 +15,7 @@
         </groups>
 
         <packages>
-            <package name="com.ecommerce.tests.*"></package>
+            <package name="com.ecommerce.tests.*"/>
         </packages>
-       <!-- <classes>
-            <class name="com.ecommerce.tests.TestingTestNGAnnotationsTest"/>
-            <class name="com.ecommerce.tests.LoginFunctionalityTest"/>
-            <class name="com.ecommerce.tests.ItemDetailsVerificationTest"/>
-            <class name="com.ecommerce.tests.SearchFunctionalityTest"/>
-
-        </classes>-->
     </test>
 </suite>

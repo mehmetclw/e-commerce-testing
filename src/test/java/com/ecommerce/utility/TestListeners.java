@@ -8,6 +8,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.time.LocalDateTime;
+
 public class TestListeners implements ITestListener {
     private ExtentReports extent;
     private ExtentTest test;
@@ -35,7 +37,8 @@ public class TestListeners implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
-        String fileName = "test-output/MyExtentReport.html";
+        String date= String.valueOf(LocalDateTime.now());
+        String fileName = "test-output/MyExtentReport"+date+".html";
         ExtentSparkReporter htmlReport = new ExtentSparkReporter(fileName);
         extent = new ExtentReports();
         extent.attachReporter(htmlReport);

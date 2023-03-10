@@ -1,9 +1,20 @@
 package com.ecommerce.utility.library;
 
-import com.ecommerce.pages.*;
-import com.ecommerce.tests.FootlinksTest;
-import com.ecommerce.utility.Driver;
-import org.openqa.selenium.WebDriver;
+
+import com.ecommerce.pages.frontend.LoginFunctionalityPage;
+import com.ecommerce.pages.frontend.SubmissionOfFormPage;
+import com.ecommerce.pages.frontend.TestShippingOptionsPages;
+import com.ecommerce.pages.frontend.TestTheNavigationPages;
+import com.ecommerce.pages.frontend.customeraccounts.AccountManagementFunctionalityPages;
+import com.ecommerce.pages.frontend.homepage.FooterLinksPages;
+import com.ecommerce.pages.frontend.homepage.HomePage;
+import com.ecommerce.pages.frontend.homepage.NewsletterFunctionalityPage;
+import com.ecommerce.pages.frontend.homepage.SearchFunctionalityPages;
+import com.ecommerce.pages.frontend.products.ItemDetailsVerificationPages;
+import com.ecommerce.pages.frontend.registration.UserRegistrationNewPages;
+import com.ecommerce.pages.frontend.registration.UserRegistrationPages;
+import com.ecommerce.pages.frontend.shoppingcart.ShoppingCartPages;
+import com.ecommerce.pages.frontend.shoppingcart.ShoppingCartProductQuantityPages;
 
 public class PageLibrary {
     private UserRegistrationPages urp;
@@ -17,7 +28,7 @@ public class PageLibrary {
     private AccountManagementFunctionalityPages amfp;
     private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
-    private FootLinksPages flp;
+    private FooterLinksPages flp;
     private NewsletterFunctionalityPage nfp;
     private SubmissionOfFormPage sofp;
     private ShoppingCartProductQuantityPages scpqp;
@@ -33,7 +44,7 @@ public class PageLibrary {
         amfp = new AccountManagementFunctionalityPages();
         hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
-        flp= new FootLinksPages();
+        flp= new FooterLinksPages();
         nfp = new NewsletterFunctionalityPage();
         sofp = new SubmissionOfFormPage();
         scpqp= new ShoppingCartProductQuantityPages();
@@ -79,7 +90,7 @@ public class PageLibrary {
     public LoginFunctionalityPage getLoginFunctionalityPage() {
         return loginFunctionalityPage;
     }
-    public FootLinksPages getFlp(){return flp;}
+    public FooterLinksPages getFlp(){return flp;}
     public NewsletterFunctionalityPage getNfp(){return nfp;}
     public SubmissionOfFormPage getSofp(){return sofp;}
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
