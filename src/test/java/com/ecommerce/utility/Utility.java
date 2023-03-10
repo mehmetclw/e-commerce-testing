@@ -57,13 +57,12 @@ public class Utility extends FlowsLibrary {
     }
 
     public void clickElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+       element.click();
     }
 
-    public void clickElementVisible(WebElement element){
+    public void clickElementWithWait(WebElement element){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        wait.until(ExpectedConditions.visibilityOf(element)).click();
     }
 
     public void clearElement(WebElement element){
@@ -85,7 +84,7 @@ public class Utility extends FlowsLibrary {
 
     public String getTextElement(WebElement element){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-       return wait.until(ExpectedConditions.elementToBeClickable(element)).getText();
+       return wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
 
 }
