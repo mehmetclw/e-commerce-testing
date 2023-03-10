@@ -13,7 +13,6 @@ public class FooterLinksElements {
     }
     @FindBy (xpath = "//footer//a[contains(@title,'')][normalize-space()='Women']")
     public WebElement womenLink;
-
     @FindBy(xpath = "//span[@class='cat-name']")
     public WebElement womenLinkPageHeader;
 
