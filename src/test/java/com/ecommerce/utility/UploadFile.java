@@ -25,7 +25,7 @@ public class UploadFile {
         System.out.println(hostSystem);
         hostSystem = hostSystem.toLowerCase();
         if (hostSystem.contains("windows")) {
-            String script = System.getProperty("user.dir") + "com\\spartans\\utility\\script.vbs";
+            String script = System.getProperty("user.dir") + "src\\test\\java\\com\\ecommerce\\utility\\script.vbs";
             try {
                 String[] args = {"wscript", script, filePath};
                 Runtime.getRuntime().exec(args);
