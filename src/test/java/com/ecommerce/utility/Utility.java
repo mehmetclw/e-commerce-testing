@@ -96,4 +96,9 @@ public class Utility extends FlowsLibrary {
         js.executeScript("arguments[0].click();", element);
     }
 
+    public void sendKeyWithJSExecutor(WebElement element,String text) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript(("arguments[0].value="+text+";"), element);
+    }
+
 }
