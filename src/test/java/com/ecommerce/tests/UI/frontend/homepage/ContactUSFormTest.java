@@ -1,4 +1,4 @@
-package com.ecommerce.tests;
+package com.ecommerce.tests.UI.frontend.homepage;
 
 import com.ecommerce.utility.ConfigReader;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package com.ecommerce.elements;
+package com.ecommerce.elements.frontend;
 
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;

@@ -1,6 +1,6 @@
-package com.ecommerce.pages;
+package com.ecommerce.pages.frontend.homepage;
 
-import com.ecommerce.elements.ContactUSFormElements;
+import com.ecommerce.elements.frontend.ContactUSFormElements;
 import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.UploadFile;
