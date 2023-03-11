@@ -57,8 +57,7 @@ public class Utility extends FlowsLibrary {
     }
 
     public void clickElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+      element.click();
     }
 
     public void clickElementVisible(WebElement element){

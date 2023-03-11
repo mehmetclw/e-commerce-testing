@@ -5,7 +5,7 @@ import com.ecommerce.utility.Utility;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class HomePage extends Utility {
+public class HomePage extends  Utility {
     public HomePageElement homePageElement;
 
     public HomePage() {
