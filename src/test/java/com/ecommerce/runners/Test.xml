@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Smoke Suite" parallel="classes" thread-count="5">
+<suite name="Smoke Suite" >
 
     <parameter name="userName" value="Test User"/>
     <parameter name="browser" value="chrome"/>
@@ -11,10 +11,7 @@
     </listeners>
     <test name="Smoke Test"  >
         <classes>
-            <class name="com.ecommerce.tests.UI.frontend.TestingTestNGAnnotationsTest"/>
-            <class name="com.ecommerce.tests.UI.frontend.LoginFunctionalityTest"/>
-            <class name="com.ecommerce.tests.UI.frontend.products.ItemDetailsVerificationTest"/>
-            <class name="com.ecommerce.tests.UI.frontend.homepage.SearchFunctionalityTest"/>
+            <class name="com.ecommerce.tests.UI.dummytesting.Test"/>
         </classes>
     </test>
 </suite>

@@ -8,10 +8,10 @@
     <test name="Smoke Test"  >
 
         <classes>
-            <class name="com.ecommerce.tests.TestingTestNGAnnotationsTest"/>
-            <class name="com.ecommerce.tests.LoginFunctionalityTest"/>
-            <class name="com.ecommerce.tests.ItemDetailsVerificationTest"/>
-            <class name="com.ecommerce.tests.SearchFunctionalityTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.TestingTestNGAnnotationsTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.LoginFunctionalityTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.products.ItemDetailsVerificationTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.homepage.SearchFunctionalityTest"/>
 
         </classes>
     </test>

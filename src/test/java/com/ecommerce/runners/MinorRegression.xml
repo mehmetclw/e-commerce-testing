@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Minor Regression Suite" parallel="classes" thread-count="5">
+    <listeners>
+        <listener class-name="com.ecommerce.utility.TestListeners"/>
+    </listeners>
+    <parameter name="userName" value="Test User"/>
+    <parameter name="browser" value="chrome"/>
+    <parameter name="email" value="abc@gmail.com"/>
+    <parameter name="password" value="abc1234"/>
+    <test name="Minor Regression Test">
+
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.ecommerce.tests.UI.frontend.LoginFunctionalityTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.SubmissionOfContactUsFormTest">
+                <methods>
+                    <exclude name="receiveEmail"></exclude>
+                </methods>
+            </class>
+            <class name="com.ecommerce.tests.UI.frontend.TestShippingOptionsTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.shoppingcart.ShoppingCartTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.shoppingcart.ShoppingCartProductQuantityTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.products.ItemDetailsVerificationTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.homepage.FootersLinksTest"/>
+            <class name="com.ecommerce.tests.UI.frontend.homepage.SearchFunctionalityTest"/>
+        </classes>
+    </test>
+</suite>
